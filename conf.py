@@ -16,16 +16,16 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "Nikola Tesla"  # (translatable)
-BLOG_TITLE = "My Nikola Site"  # (translatable)
+BLOG_AUTHOR = "Ravi Chandran"  # (translatable)
+BLOG_TITLE = "RC Notebook"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://example.com/"
+SITE_URL = "https://ravi-chandran.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "https://example.com/"
-BLOG_EMAIL = "n.tesla@example.com"
-BLOG_DESCRIPTION = "This is a demo site for Nikola."  # (translatable)
+# BASE_URL = "https://ravi-chandran.github.io/blog/"
+BLOG_EMAIL = ""
+BLOG_DESCRIPTION = "Blog"  # (translatable)
 
 # Nikola is multilingual!
 #
@@ -217,14 +217,16 @@ THEME_CONFIG = {
 #     )
 
 POSTS = (
+    ("posts/*.md", "posts", "post.tmpl"),    # RC: default instead of .rst
+    ("posts/*.ipynb", "blog", "post.tmpl"),  # added by RC
     ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
     ("posts/*.txt", "posts", "post.tmpl"),
     ("posts/*.html", "posts", "post.tmpl"),
 )
 PAGES = (
+    ("pages/*.md", "pages", "page.tmpl"),     # RC: default instead of .rst
+    ("pages/*.ipynb", "pages", "page.tmpl"),  # added by RC
     ("pages/*.rst", "pages", "page.tmpl"),
-    ("pages/*.md", "pages", "page.tmpl"),
     ("pages/*.txt", "pages", "page.tmpl"),
     ("pages/*.html", "pages", "page.tmpl"),
 )
@@ -250,6 +252,7 @@ TIMEZONE = "America/New_York"
 # Used by babel.dates, CLDR style: http://cldr.unicode.org/translation/date-time
 # You can also use 'full', 'long', 'medium', or 'short'
 # DATE_FORMAT = 'YYYY-MM-dd HH:mm'
+DATE_FORMAT = 'YYYY-MM-dd'  # RC: changed to remove hours and minutes
 
 # Date format used to display post dates, if local dates are used. (translatable)
 # Used by moment.js: https://momentjs.com/docs/#/displaying/format/
@@ -263,6 +266,7 @@ TIMEZONE = "America/New_York"
 #
 # Your theme must support it, Bootstrap already does.
 # DATE_FANCINESS = 0
+DATE_FANCINESS = 2  # added by RC
 
 # Customize the locale/region used for a language.
 # For example, to use British instead of US English: LOCALES = {'en': 'en_GB'}
@@ -316,6 +320,7 @@ COMPILERS = {
 # Create by default posts in one file format?
 # Set to False for two-file posts, with separate metadata.
 # ONE_FILE_POSTS = True
+ONE_FILE_POSTS = False  # added by RC
 
 # Preferred metadata format for new posts
 # "Nikola": reST comments, wrapped in a HTML comment if needed (default)
@@ -553,6 +558,7 @@ FRONT_INDEX_HEADER = {
 # CREATE_MONTHLY_ARCHIVE = False
 # Create one large archive instead of per-year
 # CREATE_SINGLE_ARCHIVE = False
+CREATE_SINGLE_ARCHIVE = True  # added by RC
 # Create year, month, and day archives each with a (long) list of posts
 # (overrides both CREATE_MONTHLY_ARCHIVE and CREATE_SINGLE_ARCHIVE)
 # CREATE_FULL_ARCHIVES = False
@@ -641,15 +647,18 @@ REDIRECTIONS = []
 # For more details, read the manual:
 # https://getnikola.com/handbook.html#deploying-to-github
 # You will need to configure the deployment branch on GitHub.
-GITHUB_SOURCE_BRANCH = 'src'
-GITHUB_DEPLOY_BRANCH = 'master'
+#GITHUB_SOURCE_BRANCH = 'src'      # RC commented
+GITHUB_SOURCE_BRANCH = 'master'    # RC added, no effect since I've set GITHUB_COMMIT_SOURCE = False
+#GITHUB_DEPLOY_BRANCH = 'master'   # RC commented
+GITHUB_DEPLOY_BRANCH = 'gh-pages'  # RC added
 
 # The name of the remote where you wish to push to, using github_deploy.
 GITHUB_REMOTE_NAME = 'origin'
 
 # Whether or not github_deploy should commit to the source branch automatically
 # before deploying.
-GITHUB_COMMIT_SOURCE = True
+#GITHUB_COMMIT_SOURCE = True  # RC commented
+GITHUB_COMMIT_SOURCE = False  # RC added
 
 # Where the output site should be located
 # If you don't use an absolute path, it will be considered as relative
@@ -932,6 +941,11 @@ LICENSE = ""
 # style="border-width:0; margin-bottom:12px;"
 # src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
 
+LICENSE = """
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+"""
+
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
 CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
@@ -971,12 +985,12 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, intensedebate, isso, muut, commento
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = ""
+COMMENT_SYSTEM = "disqus"  # added by RC
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = ""
+COMMENT_SYSTEM_ID = "rcnotebook"  # added by RC (disqus shortcode)
 
 # Create index.html for page folders?
 # WARNING: if a page would conflict with the index file (usually
