@@ -4,6 +4,8 @@ After creating a few build systems using Docker recently, I think I have a decen
 
 The approach discussed here is about how to create or organize the build system in a way that makes it easy to use and maintain. It's not about the tricks needed to deal with dockerizing any particular software compilers or tools. This approach applies to the common use case of building software by software developers who will be our end users. The build system itself will be abstracted away from our end users so that they can focus on the software.
 
+<!-- TEASER_END -->
+
 # Why Dockerize A Build System
 - **Focus**: I just want to focus on writing my application. When I say "build", I just want the toolset to build my code and give me the binary files to load. I don't want to spend time troubleshooting the build system. In fact, I'd rather not know or care about the build system.
 
