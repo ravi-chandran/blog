@@ -2,60 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RC Notebook (Posts about blogging)</title><link>https://ravi-chandran.github.io/</link><description></description><atom:link href="https://ravi-chandran.github.io/categories/cat_blogging.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:"&gt;Ravi Chandran&lt;/a&gt; 
 &lt;br&gt;&lt;a rel="license" href="https://opensource.org/licenses/MIT"&gt;MIT License for Software, &lt;/a&gt;
 &lt;a href="http://creativecommons.org/licenses/by/4.0/"&gt;Creative Commons License CC BY 4.0 for other items&lt;/a&gt;
-</copyright><lastBuildDate>Sun, 08 Dec 2019 02:42:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GitHub Blog Pages Using Nikola</title><link>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</link><dc:creator>Ravi Chandran</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="" src="https://ravi-chandran.github.io/images/blogging/keyboard-1490036-640x480.jpg"&gt;&lt;/p&gt;
+</copyright><lastBuildDate>Sun, 08 Dec 2019 12:01:09 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GitHub Blog Pages Using Nikola</title><link>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</link><dc:creator>Ravi Chandran</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="" src="https://ravi-chandran.github.io/images/blogging/keyboard-1490036-640x480.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://help.github.com/en/github/working-with-github-pages"&gt;GitHub Pages&lt;/a&gt; can be used to set up your blog for free with a URL like &lt;code&gt;username.github.io&lt;/code&gt; (where &lt;code&gt;username&lt;/code&gt; is your GitHub username). I had to sort through a few combinations of options with GitHub Pages and &lt;a href="https://getnikola.com/"&gt;Nikola&lt;/a&gt; settings. I finally picked one that I found optimal and intuitive.&lt;/p&gt;
 &lt;p&gt;Here are my notes in case it's useful for anyone else. Even if you don't use the Nikola static site generator, the options discussed here for GitHub Pages might still be useful.&lt;/p&gt;
-&lt;h2&gt;GitHub Pages Options&lt;/h2&gt;
-&lt;p&gt;A free GitHub Pages site can be &lt;strong&gt;user&lt;/strong&gt;-specific or &lt;strong&gt;project&lt;/strong&gt;-specific. Here's an outline of what these are and how Nikola can be used with each one.&lt;/p&gt;
-&lt;h3&gt;User Site&lt;/h3&gt;
-&lt;p&gt;A user site is based on a unique repository name tied to your GitHub username, i.e. you create a public repository called &lt;code&gt;username.github.io&lt;/code&gt; where &lt;code&gt;username&lt;/code&gt; is your unique GitHub username. GitHub publishes the pages and makes them visible to the world at &lt;code&gt;https://username.github.io&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The problem with the user site is that GitHub will publish the content from the &lt;code&gt;master&lt;/code&gt; branch of this repository. It is more intuitive to me to use the &lt;code&gt;master&lt;/code&gt; branch to keep my source files, and have a different branch where I can push the publishable HTML output. Unfortunately, with a user site, there are no such options.&lt;/p&gt;
-&lt;p&gt;Nikola (I'm using version 8.0.3 while writing this) seems to support the user site approach by default. Nikola's &lt;code&gt;conf.py&lt;/code&gt; file, where all the user configurations are stored, contains the following defaults:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;GITHUB_SOURCE_BRANCH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'src'&lt;/span&gt;
-&lt;span class="n"&gt;GITHUB_DEPLOY_BRANCH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'master'&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;p&gt;What the above means is that when "&lt;code&gt;nikola github_deploy&lt;/code&gt;" is executed, Nikola will automatically commit and push the &lt;code&gt;master&lt;/code&gt; branch with the publishable content. It will also automatically create the &lt;code&gt;src&lt;/code&gt; branch if it doesn't exist. And commit and push the &lt;code&gt;src&lt;/code&gt; branch with all the (non-&lt;code&gt;.gitignored&lt;/code&gt;) files in the repository.&lt;/p&gt;
-&lt;p&gt;Of course, branch names are just conventions, and the names could really be anything. However, not being able to use the &lt;code&gt;master&lt;/code&gt; branch to keep my source files is unintuitive to me. Note that, while Nikola allows the source and deploy branches to be named as you like, GitHub only serves pages from the &lt;code&gt;master&lt;/code&gt; branch for a user site.&lt;/p&gt;
-&lt;h3&gt;Project Site&lt;/h3&gt;
-&lt;p&gt;A project site is a GitHub Pages site that can be published from any public repository you have on GitHub. For a personal blog, let's say you create a public repository called &lt;code&gt;blog&lt;/code&gt;. Then GitHub will make the pages visible to the world at &lt;code&gt;https://username.github.io/blog/&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;With a project site, GitHub can be configured to publish from one of three options: the &lt;code&gt;master&lt;/code&gt; branch, the &lt;code&gt;docs&lt;/code&gt; folder in the &lt;code&gt;master&lt;/code&gt; branch, or the &lt;code&gt;gh-pages&lt;/code&gt; branch. I immediately gravitated towards using the &lt;code&gt;gh-pages&lt;/code&gt; branch as it allows me to use the &lt;code&gt;master&lt;/code&gt; branch naturally for all my source files and other settings. Here are the Nikola settings to achieve this:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;GITHUB_SOURCE_BRANCH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'master'&lt;/span&gt;
-&lt;span class="n"&gt;GITHUB_DEPLOY_BRANCH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'gh-pages'&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;p&gt;With these settings, Nikola takes care of generating and pushing the &lt;code&gt;gh-pages&lt;/code&gt; branch.&lt;/p&gt;
-&lt;h2&gt;Dealing With The Longer Project Site URL&lt;/h2&gt;
-&lt;p&gt;The project site has a longer URL than the user site so that appears to be a disadvantage to using project sites for a blog. However, we can work around that by setting up a redirect from &lt;code&gt;https://username.github.io/&lt;/code&gt; to &lt;code&gt;https://username.github.io/blog/&lt;/code&gt;. What this means is that you can tell everyone that your blog is at &lt;code&gt;https://username.github.io/&lt;/code&gt; and that's all they will have to type in their browser. The redirect automatically takes them to the longer URL.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://ravi-chandran.github.io/images/blogging/road-2783679_1280.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;The redirect approach, which I'm using, is based on this wonderful article: &lt;a href="https://dev.to/steveblue/setup-a-redirect-on-github-pages-1ok7"&gt;Setup a redirect on Github Pages&lt;/a&gt;. You have to create a public repository called &lt;code&gt;username.github.io&lt;/code&gt; (replacing &lt;code&gt;username&lt;/code&gt; with your username). In this repository, commit two files to the &lt;code&gt;master&lt;/code&gt; branch with content as follows (replacing my URLs for the project site-based blog URL with yours):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/ravi-chandran/ravi-chandran.github.io/blob/master/index.html"&gt;&lt;code&gt;index.html&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"utf-8"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Redirecting to https://ravi-chandran.github.io/blog/&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"refresh"&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"0; URL=https://ravi-chandran.github.io/blog/"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"https://ravi-chandran.github.io/blog/"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;p&gt;The meta tag with &lt;code&gt;http-equiv="refresh" content="0"&lt;/code&gt; causes the redirect to the specified URL. In addition, the link tag with &lt;code&gt;rel="canonical"&lt;/code&gt; tells search engines that the two sites have duplicate content.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/ravi-chandran/ravi-chandran.github.io/blob/master/_config.yml"&gt;&lt;code&gt;_config.yml&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;theme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;jekyll&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;theme&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cayman&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;p&gt;A theme has to be set here so that GitHub Pages will actually build the repository's &lt;code&gt;master&lt;/code&gt; branch as a GitHub Pages site.&lt;/p&gt;
-&lt;h2&gt;Controlling Commits&lt;/h2&gt;
-&lt;p&gt;There was still one thing that was bugging me. With my Nikola settings for the project site, I liked the fact that Nikola automatically copied the necessary files and committed them to the &lt;code&gt;gh-pages&lt;/code&gt; branch. But it also committed the branch designated as &lt;code&gt;GITHUB_SOURCE_BRANCH&lt;/code&gt;. I like leaving configurations at their default state as much as possible so that things are more likely to work in general... However, I wanted to control what and when things get committed, and to do so with meaningful commit messages. Of course, Nikola has a setting for that:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;GITHUB_COMMIT_SOURCE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
-&lt;/pre&gt;
-
-
-&lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;With this combination of settings for Nikola and GitHub Pages, anyone can achieve a free blog with a simple URL and still have intuitive configuration control over your blog source files. I hope this was useful for anyone exploring similar options.&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>GitHub Pages</category><category>Nikola</category><guid>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</guid><pubDate>Sat, 26 Oct 2019 04:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>GitHub Pages</category><category>Nikola</category><guid>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</guid><pubDate>Sat, 26 Oct 2019 04:00:00 GMT</pubDate></item></channel></rss>

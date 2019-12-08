@@ -4,6 +4,8 @@
 
 Here are my notes in case it's useful for anyone else. Even if you don't use the Nikola static site generator, the options discussed here for GitHub Pages might still be useful.
 
+<!-- TEASER_END -->
+
 # GitHub Pages Options
 A free GitHub Pages site can be **user**-specific or **project**-specific. Here's an outline of what these are and how Nikola can be used with each one.
 
