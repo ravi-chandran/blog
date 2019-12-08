@@ -1,0 +1,4 @@
+Sitemap: https://ravi-chandran.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: ravi-chandran.github.io

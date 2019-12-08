@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Using docker to create a flexible but simple build system">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dockerizing A Build System | RC Notebook</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
+<link rel="prev" href="../../blogging/github-blog-pages-using-nikola/" title="GitHub Blog Pages Using Nikola" type="text/html">
+<meta property="og:site_name" content="RC Notebook">
+<meta property="og:title" content="Dockerizing A Build System">
+<meta property="og:url" content="https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/">
+<meta property="og:description" content="Using docker to create a flexible but simple build system">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-11-03T00:00:00-04:00">
+<meta property="article:tag" content="build system">
+<meta property="article:tag" content="docker">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+
+            <span id="blog-title">RC Notebook</span>
+        </a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.md" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Dockerizing A Build System</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Ravi Chandran
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-11-03T00:00:00-04:00" itemprop="datePublished" title="2019-11-03">2019-11-03</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/docker/dockerizing-a-build-system.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p><img alt="" src="../../../images/docker/business-1845350_640.jpg"></p>
+<p>After creating a few build systems using Docker recently, I think I have a decent, repeatable approach that's worth writing down. These build systems were used for generating loadable software images for embedded hardware as well as for compiling machine learning algorithms. </p>
+<p>The approach discussed here is about how to create or organize the build system in a way that makes it easy to use and maintain. It's not about the tricks needed to deal with dockerizing any particular software compilers or tools. This approach applies to the common use case of building software by software developers who will be our end users. The build system itself will be abstracted away from our end users so that they can focus on the software.</p>
+<h2>Why Dockerize A Build System</h2>
+<ul>
+<li>
+<p><strong>Focus</strong>: I just want to focus on writing my application. When I say "build", I just want the toolset to build my code and give me the binary files to load. I don't want to spend time troubleshooting the build system. In fact, I'd rather not know or care about the build system.</p>
+</li>
+<li>
+<p><strong>Identical build behavior</strong>: Whatever the use case, I want to ensure that the entire team uses the same versions of the toolset and gets the same results when building. Otherwise we are constantly dealing with the case of "It works on my PC but not yours". Using the same toolset version and getting identical output for a given input source file set is critical in a team project.</p>
+</li>
+<li>
+<p><strong>Easy setup and future migration</strong>: While a detailed set of instructions can be provided to everyone to install a toolset for a project, chances are someone will get it wrong. Or there could be issues due to how each person has customized their Linux environment. This can be further compounded by the use of different Linux distributions across the team. The issues can get uglier quickly when it comes time for moving to the next version of the toolset. Using Docker and the guidelines here, the setup, use and migration to newer versions will be easier.</p>
+</li>
+</ul>
+<p>Dockerizing the build systems I use on my projects has certainly been valuable in my experience as it has alleviated the problems discussed above. There can still be issues due to the Docker installation itself and network configuration, especially if you have to work in a corporate environment involving some complex proxy settings. But at least there are now fewer build system problems to deal with.</p>
+<h2>How to Dockerize a Build System</h2>
+<p>I've created a <a href="https://github.com/ravi-chandran/dockerize-tutorial">tutorial repository</a> you can clone and examine later. I'll be walking through all the files in the repository here. The build system is deliberately trivial (it's just <code>gcc</code>) in order to keep things simple and focus on the architecture of a build system.</p>
+<h3>Build System Requirements</h3>
+<p>We focus on two key aspects that are desirable in a build system:</p>
+<ul>
+<li>
+<strong>Standard build invocation</strong>: We want to be able to build code by pointing to some work directory whose path is <code>/path/to/workdir</code>. We want to invoke the build simply as:</li>
+</ul>
+<pre class="code literal-block"><span></span>./build.sh /path/to/workdir
+</pre>
+
+
+<p>Let's assume that the output is also generated somewhere within <code>/path/to/workdir</code> to keep the example architecture simple for the sake of explanation. (Otherwise, we'd just be increasing the number of volumes exposed to the docker container which is not difficult, but more cumbersome to explain.)</p>
+<ul>
+<li>
+<strong>Custom build invocation via shell</strong>: In addition to the standard <code>build.sh</code> to invoke the toolset, sometimes, we need to be able to use the toolset in unforeseen ways. Eventually, some of these could be added as options to <code>build.sh</code> if needed. But I always want to be able to get to a shell where I can invoke toolset commands directly. In our trivial example, let's say I sometimes want to try out different <code>gcc</code> optimization options to see the effects. To achieve this, I want to simply invoke:</li>
+</ul>
+<pre class="code literal-block"><span></span>./shell.sh /path/to/workdir
+</pre>
+
+
+<p>And it should get me to a bash shell inside the container with access to the toolset as well as my <code>workdir</code> so I can experiment as I please with the toolset.</p>
+<h3>Build System Architecture</h3>
+<p>Given the above basic requirements, we architect the build system as shown:</p>
+<p><img alt="" src="../../../images/docker/build_sys_arch.jpg"></p>
+<p>At the bottom, we have the <code>workdir</code> representing any software source code that needs to be built by our software developer end users. Typically, this <code>workdir</code> will be a source code repository. The end user can manipulate this source code repository in any way they want before invoking a build. For example, if using <code>git</code> for version control, they could "<code>git checkout</code>" the feature branch they are working on, and add or modify files. This keeps the build system independent of the <code>workdir</code>.</p>
+<p>The three blocks at the top collectively represent the dockerized build system. The left-most (yellow) block at the top represents the scripts (<code>build.sh</code> and <code>shell.sh</code>) that the end user will use to interact with the build system.</p>
+<p>In the middle (the red block) is the Dockerfile and the associated script <code>build_docker_image.sh</code>. The development operations people (you and I in this case) will typically execute this script and generate the docker image. (In fact, we'd be executing this many, many times until we get everthing working right, but that's another story...) And then distribute the image to the end users such as through a docker trusted registry. The end users will need this image. In addition, they will clone the build system repository (i.e. one that is equivalent to the <a href="https://github.com/ravi-chandran/dockerize-tutorial">tutorial repository</a>).</p>
+<p>The <code>run_build.sh</code> script on the right is a script that is executed inside the docker container when the end user invokes either <code>build.sh</code> or <code>shell.sh</code>. I'll explain these scripts in detail next. The key here is that the end user does not need to know anything about the red or blue blocks, or how Docker works in order to use any of this.</p>
+<h3>Build System Details</h3>
+<p>Next we examine the tutorial repository's file structure which maps to this architecture. I've used this prototype structure for relatively complex build systems, so its simplicity is not a limitation in any way. Below, I've listed the tree structure of the relevant files from the repository. The <code>dockerize-tutorial</code> folder could be replaced with any other name corresponding to a build system. From within this folder, we invoke either <code>build.sh</code> or <code>shell.sh</code> with the one argument which is the path to our <code>workdir</code>.</p>
+<pre class="code literal-block"><span></span>dockerize-tutorial/
+├── build.sh
+├── shell.sh
+└── swbuilder
+    ├── build_docker_image.sh
+    ├── install_swbuilder.dockerfile
+    └── scripts
+        └── run_build.sh
+</pre>
+
+
+<p>Note that I've deliberately excluded the <code>example_workdir</code> in the above, which you'll find in the tutorial repository. Actual source code would typically reside in a separate repository and not be part of the build tool repository. It was included in the tutorial repository so that we didn't have to deal with two repositories in the tutorial.</p>
+<p>In case you want to follow along with the tutorial (and have Docker installed), you'd want to first build the docker image <code>swbuilder:v1</code> with:</p>
+<pre class="code literal-block"><span></span><span class="nb">cd</span> dockerize-tutorial/swbuilder/ 
+./build_docker_image.sh
+docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
+</pre>
+
+
+<p>But it's not necessary if you're only interested in the concepts as I'll be explaining all the files eventually.</p>
+<p>In the tutorial, you'd invoke <code>build.sh</code> as:</p>
+<pre class="code literal-block"><span></span><span class="nb">cd</span> dockerize-tutorial
+./build.sh ~/repos/dockerize-tutorial/example_workdir
+</pre>
+
+
+<p>The code for <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/build.sh"><code>build.sh</code></a> is listed below.  This script instantiates a container from the docker image <code>swbuilder:v1</code>. It performs two volume mappings: one from the <code>example_workdir</code> folder to a volume inside the container at path <code>/workdir</code>, and the second from <code>dockerize-tutorial/swbuilder/scripts</code> outside the container to <code>/scripts</code> inside the container.</p>
+<pre class="code literal-block"><span></span>docker container run                              <span class="se">\</span>
+    --volume <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/swbuilder/scripts:/scripts    <span class="se">\</span>
+    --volume <span class="nv">$1</span>:/workdir                          <span class="se">\</span>
+    --user <span class="k">$(</span>id -u <span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="k">)</span>:<span class="k">$(</span>id -g <span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="k">)</span>      <span class="se">\</span>
+    --rm -it --name build_swbuilder swbuilder:v1  <span class="se">\</span>
+    build
+</pre>
+
+
+<p>In addition, the <code>build.sh</code> also invokes the container to run with your username (and group which is assumed to be the same) so that you will not have issues with file permissions when accessing the generated build output.</p>
+<p>If you look at <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/shell.sh"><code>shell.sh</code></a>, you'll note that it is identical except for two things. <code>build.sh</code> creates a container named <code>build_swbuilder</code> while <code>shell.sh</code> creates one named <code>shell_swbuilder</code>. This is so that there are no conflicts in case you invoke either script while the other one is running. </p>
+<p>The other key difference between the two scripts is the last argument. <code>build.sh</code> passes in the argument <code>build</code> while the <code>shell.sh</code> passes in the argument <code>shell</code>. If you look at the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/install_swbuilder.dockerfile">Dockerfile</a> that is used to create the docker image, the last line contains the following <code>ENTRYPOINT</code>. This means that the the "<code>docker container run</code>" invocation above will result in executing the <code>run_build.sh</code> script with either <code>build</code> or <code>shell</code> as the one input argument.</p>
+<pre class="code literal-block"><span></span><span class="c"># run bash script and process the input command</span>
+<span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"/scripts/run_build.sh"</span><span class="p">]</span>
+</pre>
+
+
+<p>Examining <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/scripts/run_build.sh"><code>run_build.sh</code></a>, we see that it simply uses this input argument to either start the bash shell or invoke <code>gcc</code> to perform the build of our trivial <code>helloworld.c</code> project. A real build system would typically invoke a Makefile and not run <code>gcc</code> directly.</p>
+<pre class="code literal-block"><span></span><span class="nb">cd</span> /workdir
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">=</span> <span class="s2">"shell"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>    
+    <span class="nb">echo</span> <span class="s2">"Starting Bash Shell"</span>
+    /bin/bash
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">=</span> <span class="s2">"build"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">"Performing SW Build"</span>
+    gcc helloworld.c -o helloworld -Wall
+<span class="k">fi</span>
+</pre>
+
+
+<p>You could certainly pass more than one argument if your use case demands it. For the build systems I've dealt with, usually the build is for a given project with a specific <code>make</code> invocation. In the case of a build system where the build invocation is complex, you can have the <code>run_build.sh</code> call a specific script inside <code>workdir</code> that the end user has to write.</p>
+<h3>A Note About The <code>scripts</code> Folder</h3>
+<p>You may be wondering why the <code>scripts</code> folder is located deep in the tree structure rather than at the top level of the repository. Either approach would work, but I didn't want to encourage the end user to poke around and change things there. So keeping it deeper was a way to make it more difficult to poke around. Also, I could have added a <code>.dockerignore</code> file to ignore the <code>scripts</code> folder as it doesn't need to be part of the docker context. But since it's tiny, I didn't bother.</p>
+<h3>Concluding Remarks</h3>
+<p>While the approach is simple, I've used it for a few rather different build systems now and found it to be quite flexible. The aspects that are going to be relatively stable (e.g. a given toolset which changes only a few times a year) are fixed inside the docker image. The aspects that are more fluid are kept outside the docker image as scripts. This allows us to easily modify how the toolset is invoked by updating the script and pushing the changes to the build system repository. All the user needs to do is to pull the changes to their local build system repository, which is typically quite fast (unlike updating a docker image). The structure lends itself to having as many volumes and scripts as are needed while abstracting the complexity away from the end user.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../categories/build-system/" rel="tag">build system</a></li>
+            <li><a class="tag p-category" href="../../../categories/docker/" rel="tag">docker</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../blogging/github-blog-pages-using-nikola/" rel="prev" title="GitHub Blog Pages Using Nikola">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="rcnotebook",
+            disqus_url="https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/",
+        disqus_title="Dockerizing A Build System",
+        disqus_identifier="cache/posts/docker/dockerizing-a-build-system.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2019         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
+        moment.locale("en");
+        fancydates(2, "YYYY-MM-DD HH:mm");
+        </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
