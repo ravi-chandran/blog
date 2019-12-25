@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Optimizing docker builds">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker Tricks And Tips | RC Notebook</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
+<link rel="prev" href="../dockerizing-a-build-system/" title="Dockerizing A Build System" type="text/html">
+<meta property="og:site_name" content="RC Notebook">
+<meta property="og:title" content="Docker Tricks And Tips">
+<meta property="og:url" content="https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/">
+<meta property="og:description" content="Optimizing docker builds">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-12-07T00:00:00-05:00">
+<meta property="article:tag" content="build system">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="HTTP server">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.md" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Docker Tricks And Tips</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Ravi Chandran
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-12-07T00:00:00-05:00" itemprop="datePublished" title="2019-12-07">2019-12-07</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/docker/docker-tricks-and-tips.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>In a previous <a href="../dockerizing-a-build-system/">post</a>, I covered an approach for dockerizing a software build system. In this article, I discuss some techniques I've found useful while iterating on a Dockerfile to get it just right. For example, if the Dockerfile involves downloading and installing a 5GB file, each iteration of "<code>docker image build</code>" could take a lot of time even with good network speeds.</p>
+<!-- TEASER_END -->
+
+<p>On the surface, creating a Dockerfile for a build system seems like a straightforward exercise: simply implement the same steps in a Dockerfile that you'd perform if you were installing the items directly. Unfortunately, I've found that it usually doesn't quite work that way, and a few "tricks" are handy for such DevOps exercises.</p>
+<p>In the <a href="https://github.com/ravi-chandran/dockerize-tutorial">tutorial repository</a> from the previous post, I've added a <a href="https://github.com/ravi-chandran/dockerize-tutorial/tree/master/tutorial2_docker_tricks">folder</a> with an example covering some of these tricks which I'll walk through in this post.</p>
+<h3>Organize Build Tool I/O</h3>
+<p>The build inputs and outputs, and the scripts that configure and invoke the tools should be outside the image and the eventually running container. These inputs and outputs are best accessed by setting up docker volumes. I covered this extensively in a previous <a href="../dockerizing-a-build-system/">post</a> but wanted to emphasize this as it's been a useful convention for my work.</p>
+<h3>Saving Time On Docker Image Build Iterations</h3>
+<p>Using a local HTTP server is useful to avoid downloading large files multiple times from the internet during "<code>docker image build</code>" iterations. To illustrate this by example, let's say we need to create a docker image with Anaconda 3 under Ubuntu 18.04. The Anaconda 3 installer is a ~0.5GB file, so I'll use this as our "large" file for this example.</p>
+<p>Note that I don't want to use the docker <code>COPY</code> instruction as it creates a new layer. I want to delete the large installer after using it to minimize the docker image size. One could use <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multi-stage builds</a>, but I've found this approach sufficient and quite effective.</p>
+<p>The basic idea is to use a Python-based HTTP server locally to serve the large file(s) and have the Dockerfile <code>wget</code> the large file(s) from this local server. Let's explore the details of how to set this up effectively. The full example is provided <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/">here</a>.</p>
+<p>The necessary contents of the folder <code>tutorial2_docker_tricks/</code> in this example repository are outlined here:</p>
+<pre class="code literal-block"><span></span>tutorial2_docker_tricks/
+├── build_docker_image.sh                   <span class="c1"># builds the docker image</span>
+├── run_container.sh                        <span class="c1"># instantiates a container from the image</span>
+├── install_anaconda.dockerfile             <span class="c1"># Dockerfile for creating our target docker image</span>
+├── .dockerignore                           <span class="c1"># used to ignore contents of the installer/ folder from the docker context</span>
+├── installer                               <span class="c1"># folder with all our large files required for creating the docker image</span>
+│   └── Anaconda3-2019.10-Linux-x86_64.sh   <span class="c1"># from https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh</span>
+└── workdir                                 <span class="c1"># example folder used as a volume in the running container</span>
+</pre>
+
+
+<p>The key steps of the approach are:</p>
+<ul>
+<li>
+<p>Place the large file(s) in the <code>installer/</code> folder. In this example, we have the large Anaconda installer file <code>Anaconda3-2019.10-Linux-x86_64.sh</code>. Note that you won't get this file if you clone my <a href="https://github.com/ravi-chandran/dockerize-tutorial/">git repository</a>. But you can download the installer from <a href="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh">here</a> to follow along with the example. Note that only you, as the docker image creator, needs this source file. The end users of the docker image don't.</p>
+</li>
+<li>
+<p>Create the <code>.dockerignore</code> file and have it ignore the <code>installer/</code> folder to avoid Docker from copying all the large files into the build context.</p>
+</li>
+<li>
+<p>In a terminal, <code>cd</code> into the <code>tutorial2_docker_tricks/</code> folder and execute the build script as "<code>./build_docker_image.sh</code>".</p>
+</li>
+<li>
+<p>In <code>build_docker_image.sh</code>, we start the Python HTTP server to serve any files from the <code>installer/</code> folder. </p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span><span class="n">cd</span> <span class="n">installer</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">bind</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="mi">8888</span> <span class="o">&amp;</span>
+<span class="n">cd</span> <span class="o">..</span>
+</pre>
+
+
+<ul>
+<li>
+<p>If you're wondering about the strange IP address, I'm working with a VirtualBox Linux VM, and <code>10.0.2.15</code> shows up as the address of the Ethernet adapter when I run <code>ifconfig</code>. This IP seems to be the convention used by VirtualBox. If your setup is different, you'll need to update this IP address in <code>build_docker_image.sh</code> and <code>install_anaconda.dockerfile</code> appropriately. The server's port number is set to 8888 for this example.</p>
+</li>
+<li>
+<p>As the HTTP server is set to run in the background, I stop the server near the end of the script with the "<code>kill -9</code>" command using a cool approach I found <a href="https://stackoverflow.com/a/37214138">here</a>.</p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span><span class="nb">kill</span> -9 <span class="sb">`</span>ps -ef <span class="p">|</span> grep http.server <span class="p">|</span> grep <span class="m">8888</span> <span class="p">|</span> awk <span class="s1">'{print $2}'</span>
+</pre>
+
+
+<ul>
+<li>
+<p>You will note that I also have this same "<code>kill -9</code>" earlier in the script before starting the HTTP server. In general, when I iterate on any build script which I might deliberately interrupt, this ensures a clean start of the HTTP server each time.</p>
+</li>
+<li>
+<p>In the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/install_anaconda.dockerfile">Dockerfile</a>, there is a "<code>RUN wget</code>" instruction that downloads the Anaconda installer from the local HTTP server. It also deletes the installer file and cleans up after the installation all within the same layer to keep the image size to a minimum.</p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span><span class="c"># install Anaconda by downloading the installer via the local http server</span>
+<span class="k">ARG</span> ANACONDA
+<span class="k">RUN</span> wget --no-proxy http://10.0.2.15:8888/<span class="si">${</span><span class="nv">ANACONDA</span><span class="si">}</span> -O ~/anaconda.sh <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> /bin/bash ~/anaconda.sh -b -p /opt/conda <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm ~/anaconda.sh <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
+</pre>
+
+
+<ul>
+<li>
+<p>After the build is complete, you should see a docker image <code>anaconda_ubuntu1804:v1</code> present. (You can list the images with "<code>docker image ls</code>").</p>
+</li>
+<li>
+<p>You can instantiate a container from this image using <code>./run_container.sh</code> at the terminal while in the folder <code>tutorial2_docker_tricks/</code>. You can verify that Anaconda is installed as follows:</p>
+</li>
+</ul>
+<pre class="code literal-block"><span></span>$ ./run_container.sh 
+$ python --version
+Python <span class="m">3</span>.7.5
+$ conda --version
+conda <span class="m">4</span>.8.0
+$ anaconda --version
+anaconda Command line client <span class="o">(</span>version <span class="m">1</span>.7.2<span class="o">)</span>
+</pre>
+
+
+<ul>
+<li>You'll note that <code>run_container.sh</code> sets up a volume <code>workdir</code>. In this example repository, the folder <code>workdir/</code> is empty. This is a convention I use to set up a volume where I can have my Python and other scripts that are independent of the docker image.</li>
+</ul>
+<h3>Non-Root User</h3>
+<p>An important aspect of I/O concerns the ownership of the build tool output files. By default, since Docker runs as <code>root</code>, the output files would be owned by <code>root</code> which is unpleasant. We typically want to work as a non-<code>root</code> user. Changing the ownership after the build output is generated can be done with scripts but is an additional unnecessary step. It's best to set the <a href="https://docs.docker.com/engine/reference/builder/#user"><code>USER</code></a> argument in the Dockerfile at the earliest point possible.</p>
+<pre class="code literal-block"><span></span><span class="k">ARG</span> USERNAME
+<span class="c"># other commands...</span>
+<span class="k">USER</span><span class="s"> ${USERNAME}</span>
+</pre>
+
+
+<p>The <code>USERNAME</code> can be passed in as a build argument (<code>--build-arg</code>) when executing the "<code>docker image build</code>". You can see an example of this in the example <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/install_anaconda.dockerfile">Dockerfile</a> and corresponding <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/build_docker_image.sh">build script</a>.</p>
+<p>Some portions of the tools may also need to be installed as a non-<code>root</code> user. So the sequence of installations in the Dockerfile may need to be different from the way it's done if you were installing manually and directly under Linux.</p>
+<h3>Minimizing Image Size</h3>
+<p>Each <code>RUN</code> command is equivalent to executing a new shell, and each <code>RUN</code> command creates a layer. The naive approach of mimicking installation instructions with separate <code>RUN</code> commands may eventually break at one or more steps, and will also result in a larger image. Chaining multiple installation steps in one <code>RUN</code> command, and including the <code>autoremove</code>, <code>autoclean</code> and <code>rm</code> commands as in the example below is useful to minimize the size of each layer.</p>
+<pre class="code literal-block"><span></span><span class="k">RUN</span> apt-get update <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive <span class="se">\</span>
+       apt-get -y --quiet --no-install-recommends install <span class="se">\</span>
+       <span class="c1"># list of packages being installed go here \</span>
+    <span class="o">&amp;&amp;</span> apt-get -y autoremove <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> apt-get clean autoclean <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
+</pre>
+
+
+<p>Besides this, ensure that you have a <code>.dockerignore</code> file in place to ignore items that don't need to be sent to the Docker build context.</p>
+<h3>Non-Interactive Installation</h3>
+<p>I've found the <code>DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends</code> options for the <code>apt-get install</code> instruction (as in the example above) necessary to prevent the installer opening dialog boxes. Note that these options should be used as part of the <code>RUN</code> instruction. The <code>DEBIAN_FRONTEND=noninteractive</code> should not be set as an environment variable (<code>ENV</code>) in the Dockerfile as explained <a href="https://docs.docker.com/engine/faq/">here</a> as it will be inherited by the containers.</p>
+<h3>Logging Build And Run Output</h3>
+<p>Save a typescript of everything that happened during the docker image build or container run session using a simple <code>tee</code> in the bash scripts. In other words, just add "<code>|&amp; tee $BASH_SOURCE.log</code>" to the end of the "<code>docker image build</code>" and the "<code>docker image run</code>" commands in your scripts. See the examples in the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/build_docker_image.sh">image build</a> and <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/run_container.sh">container run</a> scripts. </p>
+<p>What this <code>tee</code>-ing technique does is generate a file with the same name as the bash script but with a "<code>.log</code>" extension appended to it so that you know which script it originated from. Everything you see printed to the terminal when running the script will get logged to this file with a similar name.</p>
+<p>This is especially valuable for users of your Docker images to report issues to you when something doesn't work. You can ask them to send you the log file to help diagnose the issue. Many tools generate so much output as to easily overwhelm the default size of the terminal's buffer. Relying only on the terminal's buffer capacity to copy-paste error messages may not be sufficient for diagnosing issues if the cause of the issue can only be seen much earlier in the output.</p>
+<p>I've also found this to be useful even in the Docker image-building scripts especially when using the Python-based HTTP server discussed above. The server generates so many lines during a download that it typically overwhelms the terminal's buffer.</p>
+<h3>Default Shell Selection</h3>
+<p>The default shell assumed by Docker is <code>sh</code> for Linux. I'm more familiar with <code>bash</code> and so I have a tendency to override the default with <code>bash</code> early on in the Dockerfile like this:</p>
+<pre class="code literal-block"><span></span><span class="k">SHELL</span> <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"-c"</span><span class="p">]</span>
+</pre>
+
+
+<p>I don't think there is a significant impact for the types of commands I use in Dockerfiles, so this is just precaution. The script invoked at the Dockerfile entrypoint should have the appropriate <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> anyway.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../categories/build-system/" rel="tag">build system</a></li>
+            <li><a class="tag p-category" href="../../../categories/docker/" rel="tag">docker</a></li>
+            <li><a class="tag p-category" href="../../../categories/http-server/" rel="tag">HTTP server</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../dockerizing-a-build-system/" rel="prev" title="Dockerizing A Build System">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="rcnotebook",
+            disqus_url="https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/",
+        disqus_title="Docker Tricks And Tips",
+        disqus_identifier="cache/posts/docker/docker-tricks-and-tips.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2019         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
+        moment.locale("en");
+        fancydates(2, "YYYY-MM-DD HH:mm");
+        </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/build-system.xml</loc>
-  <lastmod>2019-12-08T21:49:00Z</lastmod>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_blogging.xml</loc>
@@ -23,11 +23,15 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/docker.xml</loc>
-  <lastmod>2019-12-08T21:49:00Z</lastmod>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/github-pages.xml</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/http-server.xml</loc>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/nikola.xml</loc>
@@ -39,10 +43,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2019-12-08T21:49:00Z</lastmod>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2019-12-08T21:54:00Z</lastmod>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
 </sitemapindex>

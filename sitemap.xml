@@ -7,15 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://ravi-chandran.github.io/</loc>
-  <lastmod>2019-12-08T21:49:00Z</lastmod>
+  <lastmod>2019-12-08T21:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2019-12-08T21:54:00Z</lastmod>
+  <lastmod>2019-12-25T15:42:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2019-12-08T21:49:00Z</lastmod>
+  <lastmod>2019-12-25T15:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/blog/</loc>
@@ -42,6 +42,10 @@
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/categories/http-server/</loc>
+  <lastmod>2019-12-25T15:13:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/categories/nikola/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </url>
@@ -56,6 +60,10 @@
  <url>
   <loc>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/</loc>
+  <lastmod>2019-12-25T15:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/</loc>
