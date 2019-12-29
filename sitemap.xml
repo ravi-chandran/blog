@@ -11,11 +11,15 @@
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2019-12-25T15:42:00Z</lastmod>
+  <lastmod>2019-12-29T19:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2019-12-25T15:13:00Z</lastmod>
+  <lastmod>2019-12-29T19:07:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
+  <lastmod>2019-12-29T19:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/blog/</loc>
@@ -34,8 +38,20 @@
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/categories/corkscrew/</loc>
+  <lastmod>2019-12-29T19:07:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/docker-in-docker/</loc>
+  <lastmod>2019-12-29T18:22:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/categories/docker/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/git/</loc>
+  <lastmod>2019-12-29T19:06:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/github-pages/</loc>
@@ -50,6 +66,18 @@
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/categories/npm/</loc>
+  <lastmod>2019-12-29T19:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/proxy/</loc>
+  <lastmod>2019-12-29T18:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/wget/</loc>
+  <lastmod>2019-12-29T19:07:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/galleries/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </url>
@@ -60,6 +88,10 @@
  <url>
   <loc>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/posts/docker/docker-in-docker-and-proxy-settings/</loc>
+  <lastmod>2019-12-29T18:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/</loc>
