@@ -40,3 +40,17 @@ mkdir -p posts/somecategory
 # create post in the appropriate folder under posts - each folder represents a category
 nikola new_post -t "This is my title" posts/somecategory
 ```
+
+### Build and Review Post
+```bash
+nikola build
+nikola auto -b  # or use: nikola serve -b
+```
+
+### Publish
+1. Commit the post's files to `git`
+
+2. Deploy the post to the blog:
+```bash
+nikola github_deploy
+```
