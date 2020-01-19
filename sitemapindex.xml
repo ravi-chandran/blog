@@ -50,6 +50,14 @@
   <lastmod>2019-12-25T15:42:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/machine-learning.xml</loc>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/ml-agents.xml</loc>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/nikola.xml</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
  </sitemap>
@@ -62,19 +70,27 @@
   <lastmod>2019-12-29T19:07:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/reinforcement-learning.xml</loc>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/unity.xml</loc>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wget.xml</loc>
   <lastmod>2019-12-29T19:07:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/galleries/rss.xml</loc>
-  <lastmod>2019-12-08T21:54:00Z</lastmod>
+  <lastmod>2020-01-19T19:32:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2019-12-29T19:07:00Z</lastmod>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2019-12-29T19:07:00Z</lastmod>
+  <lastmod>2020-01-19T19:48:00Z</lastmod>
  </sitemap>
 </sitemapindex>
