@@ -11,11 +11,11 @@
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2020-01-19T19:48:00Z</lastmod>
+  <lastmod>2020-03-08T20:15:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2020-01-19T19:32:00Z</lastmod>
+  <lastmod>2020-03-08T20:15:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
@@ -82,8 +82,32 @@
   <lastmod>2019-12-29T18:22:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/categories/pypi/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/pytest/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/python/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/categories/reinforcement-learning/</loc>
   <lastmod>2020-01-19T19:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/terminalizer/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/travis-ci/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/twine/</loc>
+  <lastmod>2020-03-08T20:15:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/unity/</loc>
@@ -116,6 +140,10 @@
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/</loc>
   <lastmod>2019-12-08T21:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/posts/python/a-simple-command-timer-for-windows/</loc>
+  <lastmod>2020-03-08T19:54:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/unity/unity-ml-agents-installation-for-windows/</loc>

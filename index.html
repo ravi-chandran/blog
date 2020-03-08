@@ -13,7 +13,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/unity/unity-ml-agents-installation-for-windows/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/python/a-simple-command-timer-for-windows/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -68,7 +68,33 @@
     
         
     <div class="postindex">
-            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/unity/unity-ml-agents-installation-for-windows/" class="u-url">Unity ML Agents Installation for Windows</a></h1>
+            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/python/a-simple-command-timer-for-windows/" class="u-url">A Simple Command Timer for Windows</a></h1>
+                <div class="metadata">
+                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                        Ravi Chandran
+                    </span></p>
+            <p class="dateline">
+            <a href="posts/python/a-simple-command-timer-for-windows/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-03-08T14:02:48-04:00" itemprop="datePublished" title="2020-03-08">2020-03-08</time></a>
+            </p>
+                        <p class="commentline">
+        
+    <a href="posts/python/a-simple-command-timer-for-windows/#disqus_thread" data-disqus-identifier="cache/posts/python/a-simple-command-timer-for-windows.html">Comments</a>
+
+
+                </p>
+</div>
+            </header><div class="p-summary entry-summary">
+                    <div>
+<p><img alt="" src="images/python/cmdtimedemo.gif"></p>
+<p>It's amazing how a trivial search for something that should obviously exist spirals out of control...</p>
+<p>It all started with this. I was tinkering with some Python machine learning scripts which took a while to run, and wanted to know how long they took to run. Unfortunately, I was running my scripts on a Windows command prompt so that Tensorflow could access my PC's NVIDIA GPU. Under Linux via VirtualBox, GPU access doesn't work. Hence my need to use Windows (or get another native Linux machine...)</p>
+<p>Under Linux, there's the well known <code>time</code> utility that can tell you how long a command took to run. However, I was surprised to find no equivalent utility available in the Windows 10 command prompt. Yes, there are a myriad of solutions for this: use PowerShell, or install Cygwin, or install Bash for Linux, or install one of several old binaries that provide the solution that used to exist on some long-forgotten Windows version. I'm wary of installing anything, especially old binaries of dubious origin. Of course, there's also the more cumbersome approach of simply adding the timing functionality into the Python scripts themselves. It'd be just a few lines of code.</p>
+<p>Hey, why not just create a Python console script that does something like what the Linux <code>time</code> utility does? It'd only be a few lines of code, right? And so, that's how this little detour started...</p>
+<p class="more"><a href="posts/python/a-simple-command-timer-for-windows/">Read more…</a></p>
+</div>
+                </div>
+            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/unity/unity-ml-agents-installation-for-windows/" class="u-url">Unity ML Agents Installation for Windows</a></h1>
                 <div class="metadata">
                     <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                         Ravi Chandran
