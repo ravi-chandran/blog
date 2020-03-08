@@ -1,0 +1,8 @@
+.. title: A Simple Command Timer for Windows
+.. slug: a-simple-command-timer-for-windows
+.. date: 2020-03-08 14:02:48 UTC-04:00
+.. tags: python,PyPI,pytest,twine,Travis CI,terminalizer
+.. link: 
+.. description: Time how long a command takes under Windows command prompt
+.. type: text
+
