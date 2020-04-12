@@ -38,6 +38,10 @@
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/documentation.xml</loc>
+  <lastmod>2020-04-12T13:39:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/git.xml</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
@@ -51,7 +55,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/iptables.xml</loc>
-  <lastmod>2020-03-21T15:52:00Z</lastmod>
+  <lastmod>2020-04-12T13:26:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/machine-learning.xml</loc>
@@ -63,7 +67,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/networking.xml</loc>
-  <lastmod>2020-03-21T15:52:00Z</lastmod>
+  <lastmod>2020-04-12T13:26:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/nikola.xml</loc>
@@ -91,7 +95,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/raspberry-pi.xml</loc>
-  <lastmod>2020-03-21T15:52:00Z</lastmod>
+  <lastmod>2020-04-12T13:26:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/reinforcement-learning.xml</loc>
@@ -118,15 +122,19 @@
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/writing.xml</loc>
+  <lastmod>2020-04-12T13:39:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/galleries/rss.xml</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-03-21T15:52:00Z</lastmod>
+  <lastmod>2020-04-12T13:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-03-21T15:52:00Z</lastmod>
+  <lastmod>2020-04-12T13:40:00Z</lastmod>
  </sitemap>
 </sitemapindex>
