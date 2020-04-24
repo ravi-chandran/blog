@@ -103,6 +103,7 @@
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
+<p><strong>Please see the published version of this article on <a href="https://opensource.com/article/20/4/how-containerize-build-system"><code>opensource.com</code> here</a></strong>.</p>
 <p><img alt="" src="../../../images/docker/business-1845350_640.jpg"></p>
 <p>After creating a few build systems using Docker recently, I think I have a decent, repeatable approach that's worth writing down. These build systems were used for generating loadable software images for embedded hardware as well as for compiling machine learning algorithms. </p>
 <p>The approach discussed here is about how to create or organize the build system in a way that makes it easy to use and maintain. It's not about the tricks needed to deal with dockerizing any particular software compilers or tools. This approach applies to the common use case of building software by software developers who will be our end users. The build system itself will be abstracted away from our end users so that they can focus on the software.</p>

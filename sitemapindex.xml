@@ -15,7 +15,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/build-system.xml</loc>
-  <lastmod>2020-03-21T15:48:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_blogging.xml</loc>
@@ -23,7 +23,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_docker.xml</loc>
-  <lastmod>2020-03-21T15:48:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/corkscrew.xml</loc>
@@ -35,11 +35,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/docker.xml</loc>
-  <lastmod>2020-03-21T15:48:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/documentation.xml</loc>
-  <lastmod>2020-04-12T13:39:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/git.xml</loc>
@@ -122,19 +118,15 @@
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/writing.xml</loc>
-  <lastmod>2020-04-12T13:39:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://ravi-chandran.github.io/galleries/rss.xml</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-04-12T13:40:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-04-12T13:40:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
 </sitemapindex>

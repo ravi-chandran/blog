@@ -1,3 +1,6 @@
+
+**Please see the published version of this article on [`opensource.com` here](https://opensource.com/article/20/4/how-containerize-build-system)**.
+
 ![](/images/docker/business-1845350_640.jpg)
 
 After creating a few build systems using Docker recently, I think I have a decent, repeatable approach that's worth writing down. These build systems were used for generating loadable software images for embedded hardware as well as for compiling machine learning algorithms. 

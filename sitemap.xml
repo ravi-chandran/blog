@@ -11,11 +11,11 @@
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2020-04-12T13:40:00Z</lastmod>
+  <lastmod>2020-04-24T23:46:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2020-04-12T13:23:00Z</lastmod>
+  <lastmod>2020-04-12T13:42:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
@@ -48,10 +48,6 @@
  <url>
   <loc>https://ravi-chandran.github.io/categories/docker/</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/documentation/</loc>
-  <lastmod>2020-04-12T13:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/git/</loc>
@@ -134,10 +130,6 @@
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </url>
  <url>
-  <loc>https://ravi-chandran.github.io/categories/writing/</loc>
-  <lastmod>2020-04-12T13:23:00Z</lastmod>
- </url>
- <url>
   <loc>https://ravi-chandran.github.io/galleries/</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </url>
@@ -164,10 +156,6 @@
  <url>
   <loc>https://ravi-chandran.github.io/posts/miscellaneous/wifi-router-with-raspberry-pi/</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/posts/onwriting/on-software-documentation/</loc>
-  <lastmod>2020-04-12T13:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/python/a-simple-command-timer-for-windows/</loc>
