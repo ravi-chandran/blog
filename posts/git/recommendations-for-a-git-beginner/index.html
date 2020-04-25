@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Recommendations for a git beginner">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recommendations for a git beginner | RC Notebook</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
+<link rel="prev" href="../../miscellaneous/wifi-router-with-raspberry-pi/" title="Developing With Equipment From Work During The Pandemic" type="text/html">
+<meta property="og:site_name" content="RC Notebook">
+<meta property="og:title" content="Recommendations for a git beginner">
+<meta property="og:url" content="https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/">
+<meta property="og:description" content="Recommendations for a git beginner">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-11T00:00:00-04:00">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="source control">
+<meta property="article:tag" content="version control">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.md" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Recommendations for a git beginner</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Ravi Chandran
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-11T00:00:00-04:00" itemprop="datePublished" title="2020-04-11">2020-04-11</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/git/recommendations-for-a-git-beginner.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I started using <code>git</code> several years ago. The sophisticated way in which <code>git</code> swaps files back and forth "under the hood" (inside the mysterious <code>.git</code> folder) when changing branches still amazes me to this day. In my first job years ago where I worked on signal processing research, none of the researchers used any formal version control systems. Every day, I would make a "just-in-case" backup of my code that was in a good working state before making further changes. Even after I started using <code>git</code>, there was an initial period of anxiety when I made such backups because I didn't really know all the ways of undoing changes with <code>git</code> and feared a mishap.</p>
+<p>I wish I had known about the approaches and opportunities for code management that <code>git</code> provides beyond the high level explanations about its importance. While there is a staggering amount of documentation and tutorials on <code>git</code>, it is a sophisticated tool that is impossible to learn all at once while also trying to focus on the application you're developing.</p>
+<p>This is not a complete tutorial on <code>git</code> but a sequence of stages to gently evolve your knowledge and use of <code>git</code>. Had I known these stages beforehand, I would have stumbled less along my journey with <code>git</code>. In this first article, I'm going to outline how to evolve your usage of <code>git</code> in a one-person project.</p>
+<!-- TEASER_END -->
+
+<h3>Starting use of <code>git</code>
+</h3>
+<p>In any reasonably complex software project, writing code involves adding files, making changes to files, undoing changes, sometimes redoing changes, comparing files between branches, and making sure you don't lose any work inadvertently along the way.</p>
+<p>If you're worried that you need to completely understand how commits get stacked up, how merges and rebasing works, and the nuances of manipulating the <code>HEAD</code> pointer, well, you don't really need to know these things to get started using <code>git</code>.</p>
+<h3>Using <code>git</code> as a backup mechanism</h3>
+<p>A first step is to start using <code>git</code> for projects where you're the only author. It could even be for your own personal notes or documentation, not necessarily software. (I use <code>git</code> for my entire blog.) At this stage, <code>git</code> is primarily a backup mechanism. All you need to know is how to initialize a new <code>git</code> repository, add and commit files to it, and push it to the remote.</p>
+<h3>Viewing <code>git</code> logs and <code>diff</code>s</h3>
+<p>At the next stage, start using the commits in a meaningful way. Get a list of commit messages by typing <code>git log</code>. For me, this is a useful reminder about where I had left off on a project that I may not have worked on for a while.</p>
+<p>As you work on your code, the ability to see the differences between the last commit and your current uncommitted changes with <code>git diff</code> will be invaluable for debugging.</p>
+<p>You can also use <code>git show &lt;commit-hash&gt;</code> to see the changes made in any given commit. I also occasionally use the tool called <code>gitk</code>, primarily to step through the changes made at each commit. This is done using <code>gitk &lt;filepath&gt;</code>.</p>
+<h3>Undoing changes</h3>
+<p>Sometimes I'd mess up a file badly enough to the point where it seemed better to abandon the changes than to continue debugging. In such a situation, as long as you have not yet committed the file, it's easy enough to undo all the changes in the file with:</p>
+<pre class="code literal-block"><span></span>git checkout -- filepath
+</pre>
+
+
+<p>This approach is more reliable than depending on your code editor's undo capability. Interestingly, the more sophisticated I became with <code>git</code>, the occurrence of such bad messes became fewer and far between.</p>
+<p>For undoing a commit, there are a plethora of ways depending on how you want to manipulate <code>git</code> history (which you shouldn't worry about at this stage). A simple and effective approach for undoing a commit is:</p>
+<pre class="code literal-block"><span></span>git revert &lt;commit-hash&gt;
+</pre>
+
+
+<p>With the above method, you don't have to be concerned about needing to perform forced updates to the remote.</p>
+<h3>Using branches to add features</h3>
+<p>Always use a new branch to add a feature to a working code base. Be disciplined about this. You'd typically keep your current working copy of the code in the <code>master</code> branch. And then create a branch off of <code>master</code> to add a new feature:</p>
+<pre class="code literal-block"><span></span>git checkout master
+git pull
+git checkout -b feature-xyz
+</pre>
+
+
+<p>Once the new feature has been tested, then you'd merge the feature branch back into <code>master</code>, with steps along the following lines:</p>
+<pre class="code literal-block"><span></span><span class="c1"># assuming feature-xyz is complete and pushed</span>
+git checkout master
+git pull
+git merge feature-xyz
+git push
+</pre>
+
+
+<p>In a one-person project, you'd never have merge conflicts, so this will always work nicely even when using different computers to access your repository. It's usually a good idea to keep the feature branch around for a short while, but it should eventually be deleted locally and on the remote:</p>
+<pre class="code literal-block"><span></span>git checkout master
+git push origin --delete feature-xyz  <span class="c1"># delete feature branch on remote</span>
+git branch -d feature-xyz             <span class="c1"># delete feature branch locally</span>
+</pre>
+
+
+<h3>Undoing changes with the help of branches</h3>
+<p>Once you start using branches, more sophisticated ways of undoing changes become available. When things are completely out of control and lots of changes have already been committed, you can always just abandon the branch:</p>
+<pre class="code literal-block"><span></span><span class="c1"># Force branch to be deleted without merging to master</span>
+git branch -D branch-being-abandoned
+
+<span class="c1"># Optional: delete remote branch</span>
+git push origin --delete branch-being-abandoned
+</pre>
+
+
+<p>And start back again with a new feature branch off <code>master</code>. Sometimes, it's good to save the branch being abandoned for a little while as you might be able to salvage a file or two and add it to your new feature branch. This can be done with:</p>
+<pre class="code literal-block"><span></span>git checkout master
+git pull
+git checkout -b new-feature-branch
+git checkout branch-being-abandoned -- good-file
+</pre>
+
+
+<p>The above retrieves the file <code>good-file</code> from the <code>branch-being-abandoned</code> into your new feature branch.</p>
+<h3>Even more sophisticated ways of undoing changes</h3>
+<p>Then there is <code>git reset</code> to manipulate the <code>HEAD</code> pointer which you can explore further until your head hurts. But here's a basic use case that will come in handy. Let's say you've made changes to multiple files, performed a commit and pushed it to the remote. And now you're sorry you did all that and want to abandon this last commit. Just do this:</p>
+<pre class="code literal-block"><span></span>git reset --hard HEAD~1  <span class="c1"># get rid of the last commit completely!</span>
+git push -f              <span class="c1"># leave no evidence of the last commit in the remote!</span>
+</pre>
+
+
+<h3>Comparing files between branches</h3>
+<p>If you need to compare <code>master</code> and <code>feature-xyz</code> branches:</p>
+<pre class="code literal-block"><span></span><span class="c1"># Show all changes between these 2 branches</span>
+git diff master..feature-xyz
+</pre>
+
+
+<p>The above will show the differences in every file between these branches. And the output can be voluminous if there are lots of files with changes. I often just want a list of files that have changed, which can be obtained with:</p>
+<pre class="code literal-block"><span></span><span class="c1"># List files that are different between these 2 branches</span>
+git diff master..feature-xyz --stat
+</pre>
+
+
+<p>After that, I can view changes in one particular file between the branches with:</p>
+<pre class="code literal-block"><span></span>git diff master..feature-xyz -- &lt;filepath&gt;
+</pre>
+
+
+<h3>Graphical <code>git</code> tools vs the command line</h3>
+<p>There are many great graphical tools and editor extensions that help with using <code>git</code> in various ways. I mentioned <code>gitk</code> earlier. Tools try to abstract away the complexity of <code>git</code> while introducing ambiguity about what they are actually doing under the hood. My preference is to do almost all <code>git</code> related actions on the command line. Otherwise, I think it's difficult to truly understand some of the fundamentals.</p>
+<p>I use graphical <code>git</code> tools to support visualization. A couple of key examples:</p>
+<ul>
+<li>
+<p>Many editors can be very helpful with <code>git</code> merges</p>
+</li>
+<li>
+<p>Tools such as <code>gitk</code> are great for walking through changes in a file commit-by-commit</p>
+</li>
+</ul>
+<h3>Conclusion</h3>
+<p>I hope this article helps those at the early stages of their <code>git</code> journey with some useful hints. In the next article, I'll talk about more advanced <code>git</code> topics.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../categories/git/" rel="tag">git</a></li>
+            <li><a class="tag p-category" href="../../../categories/source-control/" rel="tag">source control</a></li>
+            <li><a class="tag p-category" href="../../../categories/version-control/" rel="tag">version control</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../miscellaneous/wifi-router-with-raspberry-pi/" rel="prev" title="Developing With Equipment From Work During The Pandemic">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="rcnotebook",
+            disqus_url="https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/",
+        disqus_title="Recommendations for a git beginner",
+        disqus_identifier="cache/posts/git/recommendations-for-a-git-beginner.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
+        moment.locale("en");
+        fancydates(2, "YYYY-MM-DD HH:mm");
+        </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
