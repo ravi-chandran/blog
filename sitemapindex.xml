@@ -26,6 +26,10 @@
   <lastmod>2020-04-24T23:46:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/cat_git.xml</loc>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/corkscrew.xml</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
  </sitemap>
@@ -39,7 +43,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/git.xml</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/github-pages.xml</loc>
@@ -99,7 +103,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/source-control.xml</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/terminalizer.xml</loc>
@@ -119,7 +123,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/version-control.xml</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wget.xml</loc>
@@ -131,10 +135,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </sitemap>
 </sitemapindex>

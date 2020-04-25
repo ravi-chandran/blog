@@ -11,11 +11,11 @@
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2020-04-25T19:18:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2020-04-25T18:56:00Z</lastmod>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
@@ -36,6 +36,10 @@
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_docker/</loc>
   <lastmod>2020-03-21T15:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/categories/cat_git/</loc>
+  <lastmod>2020-04-25T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/corkscrew/</loc>
