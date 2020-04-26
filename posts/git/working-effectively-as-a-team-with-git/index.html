@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Working effectively as a team with git">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working effectively as a team with git | RC Notebook</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
+<link rel="prev" href="../recommendations-for-a-git-beginner/" title="Recommendations for a git beginner" type="text/html">
+<meta property="og:site_name" content="RC Notebook">
+<meta property="og:title" content="Working effectively as a team with git">
+<meta property="og:url" content="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/">
+<meta property="og:description" content="Working effectively as a team with git">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-18T00:00:00-04:00">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="source control">
+<meta property="article:tag" content="version control">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.md" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Working effectively as a team with git</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Ravi Chandran
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-18T00:00:00-04:00" itemprop="datePublished" title="2020-04-18">2020-04-18</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/git/working-effectively-as-a-team-with-git.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>In the <a href="../recommendations-for-a-git-beginner/">previous post</a> in this series on evolving your use of <code>git</code>, I outlined how <code>git</code> can be used in a one-person project. </p>
+<p>In this post, I'll outline additional things you may need to learn about <code>git</code> to work effectively as part of a team.</p>
+<!-- TEASER_END -->
+
+<h3>Formalize <code>git</code> conventions for your team project</h3>
+<p>Obviously, one-person projects are easy to maintain. Once you have two or more people adding code to the same repository, everyone should follow common conventions for branch naming, tagging, coding and so forth. Every organization has its own standards or best practices, and many recommendations are freely available on the internet. What's important is to pick a suitable convention early on and follow it as a team.</p>
+<p>Also, it's likely that different team members will have different levels of expertise with <code>git</code>. You should create and maintain a basic set of instructions for performing common <code>git</code> operations following the project's conventions.</p>
+<h3>Merging changes</h3>
+<p>Although each team member works on a separate feature branch, everyone will eventually modify some common files. When merging the changes back into the <code>master</code> branch, the merge will typically not be automatic. Human intervention may be needed to reconcile the different changes made by two authors to the same file. This is where one has to learn to deal with <code>git</code> merge techniques.</p>
+<p>Modern editors have features to help with <code>git</code> merge. They will clearly indicate various options for a merge in each part of a file, such as whether to keep your changes, the other branch's changes, or both. It may be time to pick a different code editor if yours doesn't support such capabilities.</p>
+<h3>Rebase your feature branch often</h3>
+<p>As you continue to develop your feature branch, rebase it against <code>master</code> often. This means executing the following steps regularly:</p>
+<pre class="code literal-block"><span></span>git checkout master
+git pull
+git checkout feature-xyz  <span class="c1"># name of your hypothetical feature branch</span>
+git rebase master  <span class="c1"># may need to fix merge conflicts in feature-xyz</span>
+</pre>
+
+
+<p>The above steps result in rewriting history in your feature branch (and that's not a bad thing). Your feature branch is first made to look like <code>master</code> with all the updates made to <code>master</code> up to this point. And then all your commits to the feature branch are replayed on top so that they appear sequentially in the <code>git</code> log. You may get merge conflicts that you'll need to resolve along the way which can be a challenge. However, this is the best point to deal with merge conflicts because it is only impacting your feature branch.</p>
+<p>After you fix any conflicts and perform regression testing, if you're ready to merge your feature back into <code>master</code>, you'd perform the above rebase steps one last time and then perform the merge:</p>
+<pre class="code literal-block"><span></span>git checkout master
+git pull
+git merge feature-xyz
+</pre>
+
+
+<p>In the interim, if someone else had pushed changes to <code>master</code> that conflicts with yours, the <code>git</code> merge will again have conflicts which you'll need to resolve, and repeat any necessary regression testing.</p>
+<p>There are other merge philosophies (e.g. without rebasing and only using merge to avoid rewriting history), some of which may even be simpler to use. However, I've found this approach to be a clean and reliable strategy. The commit history is stacked up as a sequence of features which is meaningful.</p>
+<p>With "pure merge" strategies (without rebasing regularly as suggested above), the history in the <code>master</code> branch will be interspersed with the exact commit occurrences across all the features being developed concurrently. The exact commit times are not usually that important, and such a mixed up history is hard to review. </p>
+<h3>Squash commits before merging</h3>
+<p>When working on your feature branch, it's fine to add a commit for even minor changes. However, if every feature branch produced, say 50 commits, the resulting number of commits in the <code>master</code> branch could grow unnecessarily large as features get added. In general, there should only be one or a few commits added to <code>master</code> from each feature branch. To achieve this, you <em>squash</em> multiple commits into one or a handful of commits with more elaborate messages for each one. This is typically done using a command such as:</p>
+<pre class="code literal-block"><span></span>git rebase -i HEAD~20  <span class="c1"># look at up to 20 commits to consider squashing</span>
+</pre>
+
+
+<p>When the above is executed, an editor will pop up with a list of commits that you can act upon in several ways including <em>pick</em> or <em>squash</em>. Picking a commit means keeping that commit message. Squashing implies combining that commit's message into the previous commit. Using these and other options, you can combine commit messages into one, and perform some editing and clean up. It's also an opportunity to get rid of the commit messages that aren't really important (e.g. a commit message for fixing a typo).</p>
+<p>Note that my suggestion here is to keep all the actions associated with the commits, but only combine the associated message text and edit them for improved clarity prior to merging into <code>master</code>. Be careful not to drop a commit which is also an option of <code>git rebase</code> unless you actually intended the drop.</p>
+<p>After performing such a rebase, I like to look at the <code>git log</code> one last time to make any final edits with:</p>
+<pre class="code literal-block"><span></span>git commit --amend
+</pre>
+
+
+<p>Finally, a forced update to your remote feature branch is necessary since the <code>git</code> commit history for the branch has been rewritten:</p>
+<pre class="code literal-block"><span></span>git push -f
+</pre>
+
+
+<h3>Using tags</h3>
+<p>After you have performed the necessary testing and are ready for deployment of the software from the <code>master</code> branch, or if you want to preserve the current state as a significant milestone for any other reason, you should create a <code>git</code> tag. While a branch accumulates a history of changes corresponding to commits, a tag is a snapshot of the branch's state at that point in time. A tag can be thought of as a history-less branch or as a named pointer to a specific commit immediately after which the tag was created.</p>
+<p>Configuration control is about preserving the state of code at various milestones. Being able to reproduce software source code for any milestone when necessary so that it can be rebuilt is a requirement in most projects. A <code>git</code> tag provides the unique identifier for such a code milestone. Tagging is straightforward:</p>
+<pre class="code literal-block"><span></span>git tag milestone-id -m <span class="s2">"short message saying what this milestone is about"</span>
+git push --tags   <span class="c1"># don't forget to explicitly push the tag to the remote</span>
+</pre>
+
+
+<p>Consider the scenario where software corresponding to a given <code>git</code> tag is distributed to a customer, and the customer reports an issue. While the code in the repository may continue to evolve, it's often necessary to go back to the state of the code corresponding to the <code>git</code> tag to reproduce the customer issue precisely and create a bug fix. Sometimes the newer code may have already fixed the issue but not always. Typically, you'd checkout the specific tag and create a branch from that tag:</p>
+<pre class="code literal-block"><span></span>git checkout milestone-id        <span class="c1"># checkout the tag that was distributed to the customer</span>
+git checkout -b new-branch-name  <span class="c1"># create new branch to reproduce the bug</span>
+</pre>
+
+
+<p>Beyond this, consider using annotated tags and signed tags if these may be beneficial to your project.</p>
+<h3>Have the software executable print the tag</h3>
+<p>In most embedded projects, the resulting binary file that is created from a software build usually has a fixed name. The <code>git</code> tag corresponding to the software binary file cannot be inferred from its filename. It is useful to "embed the tag" into the software at build time so as to correlate any issues precisely to a given build. Embedding the tag can be automated as part of the build process. Typically, the tag string generated by <code>git describe</code> is inserted into the code before code compilation so that the resulting executable will print the tag string while booting up. When a customer reports an issue, they can be guided to send a copy of the boot output.</p>
+<h3>Conclusion</h3>
+<p>My goal here was to provide some ideas on how a team can work successfully with <code>git</code> on more sophisticated projects. I hope you found some of these ideas useful.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../categories/git/" rel="tag">git</a></li>
+            <li><a class="tag p-category" href="../../../categories/source-control/" rel="tag">source control</a></li>
+            <li><a class="tag p-category" href="../../../categories/version-control/" rel="tag">version control</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../recommendations-for-a-git-beginner/" rel="prev" title="Recommendations for a git beginner">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="rcnotebook",
+            disqus_url="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/",
+        disqus_title="Working effectively as a team with git",
+        disqus_identifier="cache/posts/git/working-effectively-as-a-team-with-git.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
+        moment.locale("en");
+        fancydates(2, "YYYY-MM-DD HH:mm");
+        </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
