@@ -152,52 +152,52 @@ Type "help", "copyright", "credits" or "license" for more information.
 <p>Create a batch file in <code>D:\repos\activatemlagents.bat</code> with lines:</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span><span class="k">cd</span> D:\repos
+<pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 zz-python-envs\mlagents\Scripts\activate
-</pre>
+</code></pre>
 
 
 <ul>
 <li>Set up virtual environment and upgrade pip. Note that we are <strong>not</strong> installing <code>mlagents</code> from PyPi.</li>
 </ul>
-<pre class="code literal-block"><span></span><span class="k">cd</span> D:\repos
+<pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 <span class="k">md</span> zz-python-envs
 python -m venv zz-python-envs\mlagents
 activatemlagents
 python -m pip install --upgrade pip
-</pre>
+</code></pre>
 
 
 <ul>
 <li>Clone the ML-Agents Toolkit repository, and switch to the latest stable release.</li>
 </ul>
-<pre class="code literal-block"><span></span><span class="k">cd</span> D:\repos
+<pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 git clone https://github.com/Unity-Technologies/ml-agents.git
 <span class="k">cd</span> ml-agents
 git checkout latest_release
-</pre>
+</code></pre>
 
 
 <ul>
 <li>Install <code>mlagents</code> from the cloned repo rather than from PyPi.</li>
 </ul>
-<pre class="code literal-block"><span></span><span class="k">cd</span> D:\repos
+<pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 activatemlagents
 <span class="k">cd</span> D:\repos\ml-agents\ml-agents-envs
 python -m pip install -e ./
 <span class="k">cd</span> ..
 <span class="k">cd</span> ml-agents
 python -m pip install -e ./
-</pre>
+</code></pre>
 
 
 <ul>
 <li>Verify installation by opening a new command prompt and executing the following:</li>
 </ul>
-<pre class="code literal-block"><span></span><span class="k">cd</span> D:\repos
+<pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 activatemlagents
 mlagents-learn --help
-</pre>
+</code></pre>
 
 
 <h3>Using ML-Agents Toolkit With Unity</h3>

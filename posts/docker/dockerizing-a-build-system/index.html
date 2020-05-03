@@ -130,8 +130,8 @@
 <li>
 <strong>Standard build invocation</strong>: We want to be able to build code by pointing to some work directory whose path is <code>/path/to/workdir</code>. We want to invoke the build simply as:</li>
 </ul>
-<pre class="code literal-block"><span></span>./build.sh /path/to/workdir
-</pre>
+<pre class="code literal-block"><span></span><code>./build.sh /path/to/workdir
+</code></pre>
 
 
 <p>Let's assume that the output is also generated somewhere within <code>/path/to/workdir</code> to keep the example architecture simple for the sake of explanation. (Otherwise, we'd just be increasing the number of volumes exposed to the docker container which is not difficult, but more cumbersome to explain.)</p>
@@ -139,8 +139,8 @@
 <li>
 <strong>Custom build invocation via shell</strong>: In addition to the standard <code>build.sh</code> to invoke the toolset, sometimes, we need to be able to use the toolset in unforeseen ways. Eventually, some of these could be added as options to <code>build.sh</code> if needed. But I always want to be able to get to a shell where I can invoke toolset commands directly. In our trivial example, let's say I sometimes want to try out different <code>gcc</code> optimization options to see the effects. To achieve this, I want to simply invoke:</li>
 </ul>
-<pre class="code literal-block"><span></span>./shell.sh /path/to/workdir
-</pre>
+<pre class="code literal-block"><span></span><code>./shell.sh /path/to/workdir
+</code></pre>
 
 
 <p>And it should get me to a bash shell inside the container with access to the toolset as well as my <code>workdir</code> so I can experiment as I please with the toolset.</p>
@@ -153,7 +153,7 @@
 <p>The <code>run_build.sh</code> script on the right is a script that is executed inside the docker container when the end user invokes either <code>build.sh</code> or <code>shell.sh</code>. I'll explain these scripts in detail next. The key here is that the end user does not need to know anything about the red or blue blocks, or how Docker works in order to use any of this.</p>
 <h3>Build System Details</h3>
 <p>Next we examine the tutorial repository's file structure which maps to this architecture. I've used this prototype structure for relatively complex build systems, so its simplicity is not a limitation in any way. Below, I've listed the tree structure of the relevant files from the repository. The <code>dockerize-tutorial</code> folder could be replaced with any other name corresponding to a build system. From within this folder, we invoke either <code>build.sh</code> or <code>shell.sh</code> with the one argument which is the path to our <code>workdir</code>.</p>
-<pre class="code literal-block"><span></span>dockerize-tutorial/
+<pre class="code literal-block"><span></span><code>dockerize-tutorial/
 ├── build.sh
 ├── shell.sh
 └── swbuilder
@@ -161,44 +161,44 @@
     ├── install_swbuilder.dockerfile
     └── scripts
         └── run_build.sh
-</pre>
+</code></pre>
 
 
 <p>Note that I've deliberately excluded the <code>example_workdir</code> in the above, which you'll find in the tutorial repository. Actual source code would typically reside in a separate repository and not be part of the build tool repository. It was included in the tutorial repository so that we didn't have to deal with two repositories in the tutorial.</p>
 <p>In case you want to follow along with the tutorial (and have Docker installed), you'd want to first build the docker image <code>swbuilder:v1</code> with:</p>
-<pre class="code literal-block"><span></span><span class="nb">cd</span> dockerize-tutorial/swbuilder/ 
+<pre class="code literal-block"><span></span><code><span class="nb">cd</span> dockerize-tutorial/swbuilder/ 
 ./build_docker_image.sh
 docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
-</pre>
+</code></pre>
 
 
 <p>But it's not necessary if you're only interested in the concepts as I'll be explaining all the files eventually.</p>
 <p>In the tutorial, you'd invoke <code>build.sh</code> as:</p>
-<pre class="code literal-block"><span></span><span class="nb">cd</span> dockerize-tutorial
+<pre class="code literal-block"><span></span><code><span class="nb">cd</span> dockerize-tutorial
 ./build.sh ~/repos/dockerize-tutorial/example_workdir
-</pre>
+</code></pre>
 
 
 <p>The code for <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/build.sh"><code>build.sh</code></a> is listed below.  This script instantiates a container from the docker image <code>swbuilder:v1</code>. It performs two volume mappings: one from the <code>example_workdir</code> folder to a volume inside the container at path <code>/workdir</code>, and the second from <code>dockerize-tutorial/swbuilder/scripts</code> outside the container to <code>/scripts</code> inside the container.</p>
-<pre class="code literal-block"><span></span>docker container run                              <span class="se">\</span>
+<pre class="code literal-block"><span></span><code>docker container run                              <span class="se">\</span>
     --volume <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/swbuilder/scripts:/scripts    <span class="se">\</span>
     --volume <span class="nv">$1</span>:/workdir                          <span class="se">\</span>
     --user <span class="k">$(</span>id -u <span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="k">)</span>:<span class="k">$(</span>id -g <span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="k">)</span>      <span class="se">\</span>
     --rm -it --name build_swbuilder swbuilder:v1  <span class="se">\</span>
     build
-</pre>
+</code></pre>
 
 
 <p>In addition, the <code>build.sh</code> also invokes the container to run with your username (and group which is assumed to be the same) so that you will not have issues with file permissions when accessing the generated build output.</p>
 <p>If you look at <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/shell.sh"><code>shell.sh</code></a>, you'll note that it is identical except for two things. <code>build.sh</code> creates a container named <code>build_swbuilder</code> while <code>shell.sh</code> creates one named <code>shell_swbuilder</code>. This is so that there are no conflicts in case you invoke either script while the other one is running. </p>
 <p>The other key difference between the two scripts is the last argument. <code>build.sh</code> passes in the argument <code>build</code> while the <code>shell.sh</code> passes in the argument <code>shell</code>. If you look at the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/install_swbuilder.dockerfile">Dockerfile</a> that is used to create the docker image, the last line contains the following <code>ENTRYPOINT</code>. This means that the the "<code>docker container run</code>" invocation above will result in executing the <code>run_build.sh</code> script with either <code>build</code> or <code>shell</code> as the one input argument.</p>
-<pre class="code literal-block"><span></span><span class="c"># run bash script and process the input command</span>
+<pre class="code literal-block"><span></span><code><span class="c"># run bash script and process the input command</span>
 <span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"/scripts/run_build.sh"</span><span class="p">]</span>
-</pre>
+</code></pre>
 
 
 <p>Examining <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/scripts/run_build.sh"><code>run_build.sh</code></a>, we see that it simply uses this input argument to either start the bash shell or invoke <code>gcc</code> to perform the build of our trivial <code>helloworld.c</code> project. A real build system would typically invoke a Makefile and not run <code>gcc</code> directly.</p>
-<pre class="code literal-block"><span></span><span class="nb">cd</span> /workdir
+<pre class="code literal-block"><span></span><code><span class="nb">cd</span> /workdir
 
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">=</span> <span class="s2">"shell"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>    
     <span class="nb">echo</span> <span class="s2">"Starting Bash Shell"</span>
@@ -207,7 +207,7 @@ docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
     <span class="nb">echo</span> <span class="s2">"Performing SW Build"</span>
     gcc helloworld.c -o helloworld -Wall
 <span class="k">fi</span>
-</pre>
+</code></pre>
 
 
 <p>You could certainly pass more than one argument if your use case demands it. For the build systems I've dealt with, usually the build is for a given project with a specific <code>make</code> invocation. In the case of a build system where the build invocation is complex, you can have the <code>run_build.sh</code> call a specific script inside <code>workdir</code> that the end user has to write.</p>

@@ -113,9 +113,9 @@
 <p>A user site is based on a unique repository name tied to your GitHub username, i.e. you create a public repository called <code>username.github.io</code> where <code>username</code> is your unique GitHub username. GitHub publishes the pages and makes them visible to the world at <code>https://username.github.io</code>.</p>
 <p>The problem with the user site is that GitHub will publish the content from the <code>master</code> branch of this repository. It is more intuitive to me to use the <code>master</code> branch to keep my source files, and have a different branch where I can push the publishable HTML output. Unfortunately, with a user site, there are no such options.</p>
 <p>Nikola (I'm using version 8.0.3 while writing this) seems to support the user site approach by default. Nikola's <code>conf.py</code> file, where all the user configurations are stored, contains the following defaults:</p>
-<pre class="code literal-block"><span></span><span class="n">GITHUB_SOURCE_BRANCH</span> <span class="o">=</span> <span class="s1">'src'</span>
+<pre class="code literal-block"><span></span><code><span class="n">GITHUB_SOURCE_BRANCH</span> <span class="o">=</span> <span class="s1">'src'</span>
 <span class="n">GITHUB_DEPLOY_BRANCH</span> <span class="o">=</span> <span class="s1">'master'</span>
-</pre>
+</code></pre>
 
 
 <p>What the above means is that when "<code>nikola github_deploy</code>" is executed, Nikola will automatically commit and push the <code>master</code> branch with the publishable content. It will also automatically create the <code>src</code> branch if it doesn't exist. And commit and push the <code>src</code> branch with all the (non-<code>.gitignored</code>) files in the repository.</p>
@@ -123,9 +123,9 @@
 <h3>Project Site</h3>
 <p>A project site is a GitHub Pages site that can be published from any public repository you have on GitHub. For a personal blog, let's say you create a public repository called <code>blog</code>. Then GitHub will make the pages visible to the world at <code>https://username.github.io/blog/</code>.</p>
 <p>With a project site, GitHub can be configured to publish from one of three options: the <code>master</code> branch, the <code>docs</code> folder in the <code>master</code> branch, or the <code>gh-pages</code> branch. I immediately gravitated towards using the <code>gh-pages</code> branch as it allows me to use the <code>master</code> branch naturally for all my source files and other settings. Here are the Nikola settings to achieve this:</p>
-<pre class="code literal-block"><span></span><span class="n">GITHUB_SOURCE_BRANCH</span> <span class="o">=</span> <span class="s1">'master'</span>
+<pre class="code literal-block"><span></span><code><span class="n">GITHUB_SOURCE_BRANCH</span> <span class="o">=</span> <span class="s1">'master'</span>
 <span class="n">GITHUB_DEPLOY_BRANCH</span> <span class="o">=</span> <span class="s1">'gh-pages'</span>
-</pre>
+</code></pre>
 
 
 <p>With these settings, Nikola takes care of generating and pushing the <code>gh-pages</code> branch.</p>
@@ -136,27 +136,27 @@
 <ul>
 <li><a href="https://github.com/ravi-chandran/ravi-chandran.github.io/blob/master/index.html"><code>index.html</code></a></li>
 </ul>
-<pre class="code literal-block"><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<pre class="code literal-block"><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Redirecting to https://ravi-chandran.github.io/blog/<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">"refresh"</span> <span class="na">content</span><span class="o">=</span><span class="s">"0; URL=https://ravi-chandran.github.io/blog/"</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"canonical"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://ravi-chandran.github.io/blog/"</span><span class="p">&gt;</span>
-</pre>
+</code></pre>
 
 
 <p>The meta tag with <code>http-equiv="refresh" content="0"</code> causes the redirect to the specified URL. In addition, the link tag with <code>rel="canonical"</code> tells search engines that the two sites have duplicate content.</p>
 <ul>
 <li><a href="https://github.com/ravi-chandran/ravi-chandran.github.io/blob/master/_config.yml"><code>_config.yml</code></a></li>
 </ul>
-<pre class="code literal-block"><span></span><span class="n">theme</span><span class="o">:</span> <span class="n">jekyll</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">cayman</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">theme</span><span class="o">:</span> <span class="n">jekyll</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">cayman</span>
+</code></pre>
 
 
 <p>A theme has to be set here so that GitHub Pages will actually build the repository's <code>master</code> branch as a GitHub Pages site.</p>
 <h2>Controlling Commits</h2>
 <p>There was still one thing that was bugging me. With my Nikola settings for the project site, I liked the fact that Nikola automatically copied the necessary files and committed them to the <code>gh-pages</code> branch. But it also committed the branch designated as <code>GITHUB_SOURCE_BRANCH</code>. I like leaving configurations at their default state as much as possible so that things are more likely to work in general... However, I wanted to control what and when things get committed, and to do so with meaningful commit messages. Of course, Nikola has a setting for that:</p>
-<pre class="code literal-block"><span></span><span class="n">GITHUB_COMMIT_SOURCE</span> <span class="o">=</span> <span class="kc">False</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="n">GITHUB_COMMIT_SOURCE</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre>
 
 
 <h2>Conclusion</h2>

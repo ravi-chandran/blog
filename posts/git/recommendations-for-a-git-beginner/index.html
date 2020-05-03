@@ -121,83 +121,83 @@
 <p>You can also use <code>git show &lt;commit-hash&gt;</code> to see the changes made in any given commit. I also occasionally use the tool called <code>gitk</code>, primarily to step through the changes made at each commit. This is done using <code>gitk &lt;filepath&gt;</code>.</p>
 <h3>Undoing changes</h3>
 <p>Sometimes I'd mess up a file badly enough to the point where it seemed better to abandon the changes than to continue debugging. In such a situation, as long as you have not yet committed the file, it's easy enough to undo all the changes in the file with:</p>
-<pre class="code literal-block"><span></span>git checkout -- filepath
-</pre>
+<pre class="code literal-block"><span></span><code>git checkout -- filepath
+</code></pre>
 
 
 <p>This approach is more reliable than depending on your code editor's undo capability. Interestingly, the more sophisticated I became with <code>git</code>, the occurrence of such bad messes became fewer and far between.</p>
 <p>For undoing a commit, there are a plethora of ways depending on how you want to manipulate <code>git</code> history (which you shouldn't worry about at this stage). A simple and effective approach for undoing a commit is:</p>
-<pre class="code literal-block"><span></span>git revert &lt;commit-hash&gt;
-</pre>
+<pre class="code literal-block"><span></span><code>git revert &lt;commit-hash&gt;
+</code></pre>
 
 
 <p>With the above method, you don't have to be concerned about needing to perform forced updates to the remote.</p>
 <h3>Using branches to add features</h3>
 <p>Always use a new branch to add a feature to a working code base. Be disciplined about this. You'd typically keep your current working copy of the code in the <code>master</code> branch. And then create a branch off of <code>master</code> to add a new feature:</p>
-<pre class="code literal-block"><span></span>git checkout master
+<pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git checkout -b feature-xyz
-</pre>
+</code></pre>
 
 
 <p>Once the new feature has been tested, then you'd merge the feature branch back into <code>master</code>, with steps along the following lines:</p>
-<pre class="code literal-block"><span></span><span class="c1"># assuming feature-xyz is complete and pushed</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># assuming feature-xyz is complete and pushed</span>
 git checkout master
 git pull
 git merge feature-xyz
 git push
-</pre>
+</code></pre>
 
 
 <p>In a one-person project, you'd never have merge conflicts, so this will always work nicely even when using different computers to access your repository. It's usually a good idea to keep the feature branch around for a short while, but it should eventually be deleted locally and on the remote:</p>
-<pre class="code literal-block"><span></span>git checkout master
+<pre class="code literal-block"><span></span><code>git checkout master
 git push origin --delete feature-xyz  <span class="c1"># delete feature branch on remote</span>
 git branch -d feature-xyz             <span class="c1"># delete feature branch locally</span>
-</pre>
+</code></pre>
 
 
 <h3>Undoing changes with the help of branches</h3>
 <p>Once you start using branches, more sophisticated ways of undoing changes become available. When things are completely out of control and lots of changes have already been committed, you can always just abandon the branch:</p>
-<pre class="code literal-block"><span></span><span class="c1"># Force branch to be deleted without merging to master</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># Force branch to be deleted without merging to master</span>
 git branch -D branch-being-abandoned
 
 <span class="c1"># Optional: delete remote branch</span>
 git push origin --delete branch-being-abandoned
-</pre>
+</code></pre>
 
 
 <p>And start back again with a new feature branch off <code>master</code>. Sometimes, it's good to save the branch being abandoned for a little while as you might be able to salvage a file or two and add it to your new feature branch. This can be done with:</p>
-<pre class="code literal-block"><span></span>git checkout master
+<pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git checkout -b new-feature-branch
 git checkout branch-being-abandoned -- good-file
-</pre>
+</code></pre>
 
 
 <p>The above retrieves the file <code>good-file</code> from the <code>branch-being-abandoned</code> into your new feature branch.</p>
 <h3>Even more sophisticated ways of undoing changes</h3>
 <p>Then there is <code>git reset</code> to manipulate the <code>HEAD</code> pointer which you can explore further until your head hurts. But here's a basic use case that will come in handy. Let's say you've made changes to multiple files, performed a commit and pushed it to the remote. And now you're sorry you did all that and want to abandon this last commit. Just do this:</p>
-<pre class="code literal-block"><span></span>git reset --hard HEAD~1  <span class="c1"># get rid of the last commit completely!</span>
+<pre class="code literal-block"><span></span><code>git reset --hard HEAD~1  <span class="c1"># get rid of the last commit completely!</span>
 git push -f              <span class="c1"># leave no evidence of the last commit in the remote!</span>
-</pre>
+</code></pre>
 
 
 <h3>Comparing files between branches</h3>
 <p>If you need to compare <code>master</code> and <code>feature-xyz</code> branches:</p>
-<pre class="code literal-block"><span></span><span class="c1"># Show all changes between these 2 branches</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># Show all changes between these 2 branches</span>
 git diff master..feature-xyz
-</pre>
+</code></pre>
 
 
 <p>The above will show the differences in every file between these branches. And the output can be voluminous if there are lots of files with changes. I often just want a list of files that have changed, which can be obtained with:</p>
-<pre class="code literal-block"><span></span><span class="c1"># List files that are different between these 2 branches</span>
+<pre class="code literal-block"><span></span><code><span class="c1"># List files that are different between these 2 branches</span>
 git diff master..feature-xyz --stat
-</pre>
+</code></pre>
 
 
 <p>After that, I can view changes in one particular file between the branches with:</p>
-<pre class="code literal-block"><span></span>git diff master..feature-xyz -- &lt;filepath&gt;
-</pre>
+<pre class="code literal-block"><span></span><code>git diff master..feature-xyz -- &lt;filepath&gt;
+</code></pre>
 
 
 <h3>Graphical <code>git</code> tools vs the command line</h3>

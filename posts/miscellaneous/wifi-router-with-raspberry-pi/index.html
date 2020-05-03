@@ -146,19 +146,19 @@
 <ul>
 <li>Execute the following in the UUT to set up the Pi as the UUT's default gateway. (Making this setting permanent across reboots is beyond the scope here as it depends on the specifics of the UUT.)</li>
 </ul>
-<pre class="code literal-block"><span></span>route add default gw <span class="m">192</span>.168.168.1 dev eth1
-</pre>
+<pre class="code literal-block"><span></span><code>route add default gw <span class="m">192</span>.168.168.1 dev eth1
+</code></pre>
 
 
 <ul>
 <li>Verify the result. The routing table in the UUT should show the gateway:</li>
 </ul>
-<pre class="code literal-block"><span></span>$ route -n
+<pre class="code literal-block"><span></span><code>$ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 <span class="m">0</span>.0.0.0         <span class="m">192</span>.168.168.1   <span class="m">0</span>.0.0.0         UG    <span class="m">0</span>      <span class="m">0</span>        <span class="m">0</span> eth1
 ...
-</pre>
+</code></pre>
 
 
 <h3>Router Setup</h3>
@@ -171,7 +171,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 <p>Create a script called <code>start_router.sh</code> with the following content and place it in the Pi's home directory <code>/home/pi</code>:</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
+<pre class="code literal-block"><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nv">ip_address</span><span class="o">=</span><span class="s2">"192.168.168.1"</span>
 <span class="nv">netmask</span><span class="o">=</span><span class="s2">"255.255.255.0"</span>
 <span class="nv">eth</span><span class="o">=</span><span class="s2">"eth0"</span>
@@ -190,7 +190,7 @@ sudo route add -net <span class="m">192</span>.168.168.0 netmask <span class="m"
 sudo iptables -t nat -A POSTROUTING -o <span class="nv">$wlan</span> -j MASQUERADE
 sudo iptables -A FORWARD -i <span class="nv">$wlan</span> -o <span class="nv">$eth</span> -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i <span class="nv">$eth</span> -o <span class="nv">$wlan</span> -j ACCEPT
-</pre>
+</code></pre>
 
 
 <ul>
@@ -234,10 +234,10 @@ exit 0
 <p>Add the following to <code>~/.ssh/config</code> in your PC:</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>Host rpi
+<pre class="code literal-block"><span></span><code>Host rpi
   User pi
   Hostname <span class="m">192</span>.168.168.1
-</pre>
+</code></pre>
 
 
 <ul>

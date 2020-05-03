@@ -116,7 +116,7 @@
 <p>Note that I don't want to use the docker <code>COPY</code> instruction as it creates a new layer. I want to delete the large installer after using it to minimize the docker image size. One could use <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multi-stage builds</a>, but I've found this approach sufficient and quite effective.</p>
 <p>The basic idea is to use a Python-based HTTP server locally to serve the large file(s) and have the Dockerfile <code>wget</code> the large file(s) from this local server. Let's explore the details of how to set this up effectively. The full example is provided <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/">here</a>.</p>
 <p>The necessary contents of the folder <code>tutorial2_docker_tricks/</code> in this example repository are outlined here:</p>
-<pre class="code literal-block"><span></span>tutorial2_docker_tricks/
+<pre class="code literal-block"><span></span><code>tutorial2_docker_tricks/
 ├── build_docker_image.sh                   <span class="c1"># builds the docker image</span>
 ├── run_container.sh                        <span class="c1"># instantiates a container from the image</span>
 ├── install_anaconda.dockerfile             <span class="c1"># Dockerfile for creating our target docker image</span>
@@ -124,7 +124,7 @@
 ├── installer                               <span class="c1"># folder with all our large files required for creating the docker image</span>
 │   └── Anaconda3-2019.10-Linux-x86_64.sh   <span class="c1"># from https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh</span>
 └── workdir                                 <span class="c1"># example folder used as a volume in the running container</span>
-</pre>
+</code></pre>
 
 
 <p>The key steps of the approach are:</p>
@@ -142,10 +142,10 @@
 <p>In <code>build_docker_image.sh</code>, we start the Python HTTP server to serve any files from the <code>installer/</code> folder. </p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span><span class="n">cd</span> <span class="n">installer</span>
+<pre class="code literal-block"><span></span><code><span class="n">cd</span> <span class="n">installer</span>
 <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">bind</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="mi">8888</span> <span class="o">&amp;</span>
 <span class="n">cd</span> <span class="o">..</span>
-</pre>
+</code></pre>
 
 
 <ul>
@@ -156,8 +156,8 @@
 <p>As the HTTP server is set to run in the background, I stop the server near the end of the script with the "<code>kill -9</code>" command using a cool approach I found <a href="https://stackoverflow.com/a/37214138">here</a>.</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span><span class="nb">kill</span> -9 <span class="sb">`</span>ps -ef <span class="p">|</span> grep http.server <span class="p">|</span> grep <span class="m">8888</span> <span class="p">|</span> awk <span class="s1">'{print $2}'</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="nb">kill</span> -9 <span class="sb">`</span>ps -ef <span class="p">|</span> grep http.server <span class="p">|</span> grep <span class="m">8888</span> <span class="p">|</span> awk <span class="s1">'{print $2}'</span>
+</code></pre>
 
 
 <ul>
@@ -168,13 +168,13 @@
 <p>In the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/install_anaconda.dockerfile">Dockerfile</a>, there is a "<code>RUN wget</code>" instruction that downloads the Anaconda installer from the local HTTP server. It also deletes the installer file and cleans up after the installation all within the same layer to keep the image size to a minimum.</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span><span class="c"># install Anaconda by downloading the installer via the local http server</span>
+<pre class="code literal-block"><span></span><code><span class="c"># install Anaconda by downloading the installer via the local http server</span>
 <span class="k">ARG</span> ANACONDA
 <span class="k">RUN</span> wget --no-proxy http://10.0.2.15:8888/<span class="si">${</span><span class="nv">ANACONDA</span><span class="si">}</span> -O ~/anaconda.sh <span class="se">\</span>
     <span class="o">&amp;&amp;</span> /bin/bash ~/anaconda.sh -b -p /opt/conda <span class="se">\</span>
     <span class="o">&amp;&amp;</span> rm ~/anaconda.sh <span class="se">\</span>
     <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
-</pre>
+</code></pre>
 
 
 <ul>
@@ -185,14 +185,14 @@
 <p>You can instantiate a container from this image using <code>./run_container.sh</code> at the terminal while in the folder <code>tutorial2_docker_tricks/</code>. You can verify that Anaconda is installed as follows:</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>$ ./run_container.sh 
+<pre class="code literal-block"><span></span><code>$ ./run_container.sh 
 $ python --version
 Python <span class="m">3</span>.7.5
 $ conda --version
 conda <span class="m">4</span>.8.0
 $ anaconda --version
 anaconda Command line client <span class="o">(</span>version <span class="m">1</span>.7.2<span class="o">)</span>
-</pre>
+</code></pre>
 
 
 <ul>
@@ -200,24 +200,24 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 </ul>
 <h3>Non-Root User</h3>
 <p>An important aspect of I/O concerns the ownership of the build tool output files. By default, since Docker runs as <code>root</code>, the output files would be owned by <code>root</code> which is unpleasant. We typically want to work as a non-<code>root</code> user. Changing the ownership after the build output is generated can be done with scripts but is an additional unnecessary step. It's best to set the <a href="https://docs.docker.com/engine/reference/builder/#user"><code>USER</code></a> argument in the Dockerfile at the earliest point possible.</p>
-<pre class="code literal-block"><span></span><span class="k">ARG</span> USERNAME
+<pre class="code literal-block"><span></span><code><span class="k">ARG</span> USERNAME
 <span class="c"># other commands...</span>
 <span class="k">USER</span><span class="s"> ${USERNAME}</span>
-</pre>
+</code></pre>
 
 
 <p>The <code>USERNAME</code> can be passed in as a build argument (<code>--build-arg</code>) when executing the "<code>docker image build</code>". You can see an example of this in the example <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/install_anaconda.dockerfile">Dockerfile</a> and corresponding <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/build_docker_image.sh">build script</a>.</p>
 <p>Some portions of the tools may also need to be installed as a non-<code>root</code> user. So the sequence of installations in the Dockerfile may need to be different from the way it's done if you were installing manually and directly under Linux.</p>
 <h3>Minimizing Image Size</h3>
 <p>Each <code>RUN</code> command is equivalent to executing a new shell, and each <code>RUN</code> command creates a layer. The naive approach of mimicking installation instructions with separate <code>RUN</code> commands may eventually break at one or more steps, and will also result in a larger image. Chaining multiple installation steps in one <code>RUN</code> command, and including the <code>autoremove</code>, <code>autoclean</code> and <code>rm</code> commands as in the example below is useful to minimize the size of each layer.</p>
-<pre class="code literal-block"><span></span><span class="k">RUN</span> apt-get update <span class="se">\</span>
+<pre class="code literal-block"><span></span><code><span class="k">RUN</span> apt-get update <span class="se">\</span>
     <span class="o">&amp;&amp;</span> <span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive <span class="se">\</span>
        apt-get -y --quiet --no-install-recommends install <span class="se">\</span>
        <span class="c1"># list of packages being installed go here \</span>
     <span class="o">&amp;&amp;</span> apt-get -y autoremove <span class="se">\</span>
     <span class="o">&amp;&amp;</span> apt-get clean autoclean <span class="se">\</span>
     <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
-</pre>
+</code></pre>
 
 
 <p>Besides this, ensure that you have a <code>.dockerignore</code> file in place to ignore items that don't need to be sent to the Docker build context.</p>
@@ -230,8 +230,8 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 <p>I've also found this to be useful even in the Docker image-building scripts especially when using the Python-based HTTP server discussed above. The server generates so many lines during a download that it typically overwhelms the terminal's buffer.</p>
 <h3>Default Shell Selection</h3>
 <p>The default shell assumed by Docker is <code>sh</code> for Linux. I'm more familiar with <code>bash</code> and so I have a tendency to override the default with <code>bash</code> early on in the Dockerfile like this:</p>
-<pre class="code literal-block"><span></span><span class="k">SHELL</span> <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"-c"</span><span class="p">]</span>
-</pre>
+<pre class="code literal-block"><span></span><code><span class="k">SHELL</span> <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"-c"</span><span class="p">]</span>
+</code></pre>
 
 
 <p>I don't think there is a significant impact for the types of commands I use in Dockerfiles, so this is just precaution. The script invoked at the Dockerfile entrypoint should have the appropriate <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> anyway.</p>

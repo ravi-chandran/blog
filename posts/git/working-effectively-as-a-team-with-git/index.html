@@ -15,6 +15,7 @@
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../recommendations-for-a-git-beginner/" title="Recommendations for a git beginner" type="text/html">
+<link rel="next" href="../../wsl2/straddling-windows-and-linux/" title="Straddling Windows and Linux" type="text/html">
 <meta property="og:site_name" content="RC Notebook">
 <meta property="og:title" content="Working effectively as a team with git">
 <meta property="og:url" content="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/">
@@ -115,19 +116,19 @@
 <p>Modern editors have features to help with <code>git</code> merge. They will clearly indicate various options for a merge in each part of a file, such as whether to keep your changes, the other branch's changes, or both. It may be time to pick a different code editor if yours doesn't support such capabilities.</p>
 <h3>Rebase your feature branch often</h3>
 <p>As you continue to develop your feature branch, rebase it against <code>master</code> often. This means executing the following steps regularly:</p>
-<pre class="code literal-block"><span></span>git checkout master
+<pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git checkout feature-xyz  <span class="c1"># name of your hypothetical feature branch</span>
 git rebase master  <span class="c1"># may need to fix merge conflicts in feature-xyz</span>
-</pre>
+</code></pre>
 
 
 <p>The above steps result in rewriting history in your feature branch (and that's not a bad thing). Your feature branch is first made to look like <code>master</code> with all the updates made to <code>master</code> up to this point. And then all your commits to the feature branch are replayed on top so that they appear sequentially in the <code>git</code> log. You may get merge conflicts that you'll need to resolve along the way which can be a challenge. However, this is the best point to deal with merge conflicts because it is only impacting your feature branch.</p>
 <p>After you fix any conflicts and perform regression testing, if you're ready to merge your feature back into <code>master</code>, you'd perform the above rebase steps one last time and then perform the merge:</p>
-<pre class="code literal-block"><span></span>git checkout master
+<pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git merge feature-xyz
-</pre>
+</code></pre>
 
 
 <p>In the interim, if someone else had pushed changes to <code>master</code> that conflicts with yours, the <code>git</code> merge will again have conflicts which you'll need to resolve, and repeat any necessary regression testing.</p>
@@ -135,34 +136,34 @@ git merge feature-xyz
 <p>With "pure merge" strategies (without rebasing regularly as suggested above), the history in the <code>master</code> branch will be interspersed with the exact commit occurrences across all the features being developed concurrently. The exact commit times are not usually that important, and such a mixed up history is hard to review. </p>
 <h3>Squash commits before merging</h3>
 <p>When working on your feature branch, it's fine to add a commit for even minor changes. However, if every feature branch produced, say 50 commits, the resulting number of commits in the <code>master</code> branch could grow unnecessarily large as features get added. In general, there should only be one or a few commits added to <code>master</code> from each feature branch. To achieve this, you <em>squash</em> multiple commits into one or a handful of commits with more elaborate messages for each one. This is typically done using a command such as:</p>
-<pre class="code literal-block"><span></span>git rebase -i HEAD~20  <span class="c1"># look at up to 20 commits to consider squashing</span>
-</pre>
+<pre class="code literal-block"><span></span><code>git rebase -i HEAD~20  <span class="c1"># look at up to 20 commits to consider squashing</span>
+</code></pre>
 
 
 <p>When the above is executed, an editor will pop up with a list of commits that you can act upon in several ways including <em>pick</em> or <em>squash</em>. Picking a commit means keeping that commit message. Squashing implies combining that commit's message into the previous commit. Using these and other options, you can combine commit messages into one, and perform some editing and clean up. It's also an opportunity to get rid of the commit messages that aren't really important (e.g. a commit message for fixing a typo).</p>
 <p>Note that my suggestion here is to keep all the actions associated with the commits, but only combine the associated message text and edit them for improved clarity prior to merging into <code>master</code>. Be careful not to drop a commit which is also an option of <code>git rebase</code> unless you actually intended the drop.</p>
 <p>After performing such a rebase, I like to look at the <code>git log</code> one last time to make any final edits with:</p>
-<pre class="code literal-block"><span></span>git commit --amend
-</pre>
+<pre class="code literal-block"><span></span><code>git commit --amend
+</code></pre>
 
 
 <p>Finally, a forced update to your remote feature branch is necessary since the <code>git</code> commit history for the branch has been rewritten:</p>
-<pre class="code literal-block"><span></span>git push -f
-</pre>
+<pre class="code literal-block"><span></span><code>git push -f
+</code></pre>
 
 
 <h3>Using tags</h3>
 <p>After you have performed the necessary testing and are ready for deployment of the software from the <code>master</code> branch, or if you want to preserve the current state as a significant milestone for any other reason, you should create a <code>git</code> tag. While a branch accumulates a history of changes corresponding to commits, a tag is a snapshot of the branch's state at that point in time. A tag can be thought of as a history-less branch or as a named pointer to a specific commit immediately after which the tag was created.</p>
 <p>Configuration control is about preserving the state of code at various milestones. Being able to reproduce software source code for any milestone when necessary so that it can be rebuilt is a requirement in most projects. A <code>git</code> tag provides the unique identifier for such a code milestone. Tagging is straightforward:</p>
-<pre class="code literal-block"><span></span>git tag milestone-id -m <span class="s2">"short message saying what this milestone is about"</span>
+<pre class="code literal-block"><span></span><code>git tag milestone-id -m <span class="s2">"short message saying what this milestone is about"</span>
 git push --tags   <span class="c1"># don't forget to explicitly push the tag to the remote</span>
-</pre>
+</code></pre>
 
 
 <p>Consider the scenario where software corresponding to a given <code>git</code> tag is distributed to a customer, and the customer reports an issue. While the code in the repository may continue to evolve, it's often necessary to go back to the state of the code corresponding to the <code>git</code> tag to reproduce the customer issue precisely and create a bug fix. Sometimes the newer code may have already fixed the issue but not always. Typically, you'd checkout the specific tag and create a branch from that tag:</p>
-<pre class="code literal-block"><span></span>git checkout milestone-id        <span class="c1"># checkout the tag that was distributed to the customer</span>
+<pre class="code literal-block"><span></span><code>git checkout milestone-id        <span class="c1"># checkout the tag that was distributed to the customer</span>
 git checkout -b new-branch-name  <span class="c1"># create new branch to reproduce the bug</span>
-</pre>
+</code></pre>
 
 
 <p>Beyond this, consider using annotated tags and signed tags if these may be beneficial to your project.</p>
@@ -180,6 +181,9 @@ git checkout -b new-branch-name  <span class="c1"># create new branch to reprodu
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../recommendations-for-a-git-beginner/" rel="prev" title="Recommendations for a git beginner">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../wsl2/straddling-windows-and-linux/" rel="next" title="Straddling Windows and Linux">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
