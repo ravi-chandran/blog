@@ -1,0 +1,1 @@
+nikola\Scripts\activate
