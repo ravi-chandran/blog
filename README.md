@@ -1,6 +1,17 @@
 # RC Notebook
 
+These notes are for my blog setup in an Ubuntu 18.04 VM.
+
+Differences in setup between VirtualBox and WSL2 VMs are noted where applicable. 
+
+
 ## Installation
+- For `wsl2` with `Ubuntu-1804`, install the following:
+```bash
+sudo apt update
+sudo apt install python3-venv
+```
+
 - Create GitHub repository called `blog`.
 
 - Then clone the `blog` repository and install Nikola in its root folder.
@@ -14,10 +25,16 @@ python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install --upgrade "Nikola[extras]"
 ```
 
-- Add these to `.bash_aliases` for convenience: 
+- Add these to `.bash_aliases` for convenience in a VirtualBox VM:
 ```bash
 alias blog="cd ~/repos/blog"
 alias nik="source ./nikola/bin/activate"
+```
+
+- Add these to `.bash_aliases` for convenience in a WSL2 VM:
+```bash
+alias blog="cd /mnt/d/repos/blogging/blog"
+alias nik="pushd . > /dev/null; cd ; source ./nikola/bin/activate; popd > /dev/null"
 ```
 
 - If it's the first time, initialize the repository as a Nikola site:
