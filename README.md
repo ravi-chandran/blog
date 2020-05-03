@@ -1,8 +1,8 @@
 # RC Notebook
 
-These notes are for my blog setup in an Ubuntu 18.04 VM.
+These notes are for my blog setup in an Ubuntu 18.04 VM as well as Windows.
 
-Differences in setup between VirtualBox and WSL2 VMs are noted where applicable. 
+For the Ubuntu VM, differences in setup between VirtualBox and WSL2 VMs are noted where applicable.
 
 
 ## Installation
@@ -23,6 +23,15 @@ python3 -m venv nikola
 source ./nikola/bin/activate
 python3 -m pip install --upgrade pip setuptools wheel
 python3 -m pip install --upgrade "Nikola[extras]"
+```
+
+- For Windows:
+```bat
+cd D:\repos\blogging\blog
+python -m venv nikola
+nikola\Scripts\activate
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install --upgrade "Nikola[extras]"
 ```
 
 - Add these to `.bash_aliases` for convenience in a VirtualBox VM:
