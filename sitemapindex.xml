@@ -22,16 +22,12 @@
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/cat_docker-linux.xml</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_docker.xml</loc>
   <lastmod>2020-05-09T19:11:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_git.xml</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_linux.xml</loc>
@@ -39,10 +35,6 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_python.xml</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/cat_raspberry-pi-networking-linux.xml</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </sitemap>
  <sitemap>
@@ -67,7 +59,7 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/git.xml</loc>
-  <lastmod>2020-05-09T19:11:00Z</lastmod>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/github-pages.xml</loc>
@@ -134,6 +126,10 @@
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/ssh.xml</loc>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/terminalizer.xml</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </sitemap>
@@ -171,10 +167,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-05-09T19:11:00Z</lastmod>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-05-09T19:11:00Z</lastmod>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
  </sitemap>
 </sitemapindex>

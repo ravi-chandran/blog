@@ -7,15 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://ravi-chandran.github.io/</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
+  <lastmod>2020-05-09T19:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2020-05-09T19:11:00Z</lastmod>
+  <lastmod>2020-05-09T20:15:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2020-05-09T19:11:00Z</lastmod>
+  <lastmod>2020-05-09T19:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
@@ -34,10 +34,6 @@
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://ravi-chandran.github.io/categories/cat_docker-linux/</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
- </url>
- <url>
   <loc>https://ravi-chandran.github.io/categories/cat_docker/</loc>
   <lastmod>2020-05-09T19:11:00Z</lastmod>
  </url>
@@ -51,10 +47,6 @@
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_python/</loc>
-  <lastmod>2020-05-09T19:08:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/cat_raspberry-pi-networking-linux/</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
  <url>
@@ -146,6 +138,10 @@
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/categories/ssh/</loc>
+  <lastmod>2020-05-09T19:55:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/categories/terminalizer/</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
@@ -182,6 +178,10 @@
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
  <url>
+  <loc>https://ravi-chandran.github.io/index-1.html</loc>
+  <lastmod>2020-05-09T19:55:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
  </url>
@@ -196,6 +196,10 @@
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/</loc>
   <lastmod>2020-05-09T19:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://ravi-chandran.github.io/posts/git/git-setup-in-5-minutes/</loc>
+  <lastmod>2020-05-09T19:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/</loc>
