@@ -2,7 +2,7 @@
 .. slug: dockerizing-a-build-system
 .. date: 2019-11-03
 .. tags: docker,build system
-.. category: docker
+.. category: docker, Linux
 .. link: 
 .. description: Using docker to create a flexible but simple build system
 .. type: text

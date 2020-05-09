@@ -2,6 +2,7 @@
 .. slug: docker-tricks-and-tips
 .. date: 2019-12-07
 .. tags: docker,build system,HTTP server
+.. category: docker, Linux
 .. link: 
 .. description: Optimizing docker builds
 .. type: text

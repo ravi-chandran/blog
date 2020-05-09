@@ -2,6 +2,7 @@
 .. slug: docker-in-docker-and-proxy-settings
 .. date: 2019-12-21
 .. tags: docker,docker-in-docker,build system,proxy,wget,npm,apt-get,git,corkscrew
+.. category: docker, Linux
 .. link: 
 .. description: Configuring Proxy settings for a Docker-In-Docker Setup
 .. type: text
