@@ -1,3 +1,5 @@
+**Please see an adapted version of this article published on [`Opensource.com` here](https://opensource.com/article/20/5/optimize-container-builds)**.
+
 In a previous [post](../dockerizing-a-build-system/), I covered an approach for dockerizing a software build system. In this article, I discuss some techniques I've found useful while iterating on a Dockerfile to get it just right. For example, if the Dockerfile involves downloading and installing a 5GB file, each iteration of "`docker image build`" could take a lot of time even with good network speeds.
 
 <!-- TEASER_END -->

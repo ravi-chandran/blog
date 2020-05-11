@@ -1,5 +1,5 @@
 
-**Please see the published version of this article on [`opensource.com` here](https://opensource.com/article/20/4/how-containerize-build-system)**.
+**Please see the published version of this article on [`Opensource.com` here](https://opensource.com/article/20/4/how-containerize-build-system)**.
 
 ![](/images/docker/business-1845350_640.jpg)
 
