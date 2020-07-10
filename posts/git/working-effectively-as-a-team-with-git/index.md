@@ -1,3 +1,5 @@
+**Please see an adapted version of this article published on [`Opensource.com` here](https://opensource.com/article/20/7/git-best-practices)**.
+
 In the [previous post](../recommendations-for-a-git-beginner/) in this series on evolving your use of `git`, I outlined how `git` can be used in a one-person project. 
 
 In this post, I'll outline additional things you may need to learn about `git` to work effectively as part of a team.
