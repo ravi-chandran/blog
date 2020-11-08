@@ -14,7 +14,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/">
 <link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/wsl2/wsl2-and-nikola-blogs/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/miscellaneous/the-pandemic-and-embedded-software-projects/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -69,7 +69,31 @@
     
         
     <div class="postindex">
-            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/wsl2/wsl2-and-nikola-blogs/" class="u-url">WSL2 and Nikola Blogs</a></h1>
+            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/miscellaneous/the-pandemic-and-embedded-software-projects/" class="u-url">The Pandemic And Embedded Software Projects</a></h1>
+                <div class="metadata">
+                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                        Ravi Chandran
+                    </span></p>
+            <p class="dateline">
+            <a href="posts/miscellaneous/the-pandemic-and-embedded-software-projects/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-11-08T08:30:08-05:00" itemprop="datePublished" title="2020-11-08">2020-11-08</time></a>
+            </p>
+                        <p class="commentline">
+        
+    <a href="posts/miscellaneous/the-pandemic-and-embedded-software-projects/#disqus_thread" data-disqus-identifier="cache/posts/miscellaneous/the-pandemic-and-embedded-software-projects.html">Comments</a>
+
+
+                </p>
+</div>
+            </header><div class="p-summary entry-summary">
+                    <div>
+<p>When the pandemic hit, I scrambled to determine a way to work from home with my embedded system. The system was portable. I squeezed everything I needed into a large box. I already had extra monitors and other accessories in my home office. Hence working from home was viable.</p>
+<p>Developing embedded software is a cycle of building the code, flashing the binary into the embedded target hardware, and testing it. And repeating this cycle until the team has all the features developed and bugs fixed.</p>
+<p>Here are some valuable lessons I learned during this process.</p>
+<p class="more"><a href="posts/miscellaneous/the-pandemic-and-embedded-software-projects/">Read more…</a></p>
+</div>
+                </div>
+            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/wsl2/wsl2-and-nikola-blogs/" class="u-url">WSL2 and Nikola Blogs</a></h1>
                 <div class="metadata">
                     <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                         Ravi Chandran
@@ -285,29 +309,6 @@
 <p>The above volume mapping provides the container with access to the Docker socket with which it can start more "sibling" containers. But the approach is not a "true" Docker-in-Docker (which is not recommended) and avoids its corresponding issues. The nice thing about this approach is it can work with any Docker image (with some additional items installed as explained in this post).</p>
 <p>Here's a compilation of useful proxy settings that may be required if you work in an organization using proxies and require Docker-in-Docker for your work. In addition, I also outline how to update your Dockerfile so that the corresponding image can support this Docker-in-Docker approach. </p>
 <p class="more"><a href="posts/docker/docker-in-docker-and-proxy-settings/">Read more…</a></p>
-</div>
-                </div>
-            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/docker/docker-tricks-and-tips/" class="u-url">Docker Tricks And Tips</a></h1>
-                <div class="metadata">
-                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                        Ravi Chandran
-                    </span></p>
-            <p class="dateline">
-            <a href="posts/docker/docker-tricks-and-tips/" rel="bookmark">
-            <time class="published dt-published" datetime="2019-12-07T00:00:00-05:00" itemprop="datePublished" title="2019-12-07">2019-12-07</time></a>
-            </p>
-                        <p class="commentline">
-        
-    <a href="posts/docker/docker-tricks-and-tips/#disqus_thread" data-disqus-identifier="cache/posts/docker/docker-tricks-and-tips.html">Comments</a>
-
-
-                </p>
-</div>
-            </header><div class="p-summary entry-summary">
-                    <div>
-<p><strong>Please see an adapted version of this article published on <a href="https://opensource.com/article/20/5/optimize-container-builds"><code>Opensource.com</code> here</a></strong>.</p>
-<p>In a previous <a href="posts/docker/dockerizing-a-build-system/">post</a>, I covered an approach for dockerizing a software build system. In this article, I discuss some techniques I've found useful while iterating on a Dockerfile to get it just right. For example, if the Dockerfile involves downloading and installing a 5GB file, each iteration of "<code>docker image build</code>" could take a lot of time even with good network speeds.</p>
-<p class="more"><a href="posts/docker/docker-tricks-and-tips/">Read more…</a></p>
 </div>
                 </div>
             </article>
