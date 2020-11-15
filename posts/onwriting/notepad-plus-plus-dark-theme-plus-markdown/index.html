@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Notepad++ dark theme plus Markdown">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notepad++ Dark Theme &amp; Markdown | RC Notebook</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://ravi-chandran.github.io/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
+<link rel="prev" href="../../miscellaneous/the-pandemic-and-embedded-software-projects/" title="The Pandemic And Embedded Software Projects" type="text/html">
+<meta property="og:site_name" content="RC Notebook">
+<meta property="og:title" content="Notepad++ Dark Theme &amp; Markdown">
+<meta property="og:url" content="https://ravi-chandran.github.io/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown/">
+<meta property="og:description" content="Notepad++ dark theme plus Markdown">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-11-15T10:03:59-05:00">
+<meta property="article:tag" content="editors">
+<meta property="article:tag" content="Notepad++">
+<meta property="article:tag" content="text editors">
+<meta property="article:tag" content="writing">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.md" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Notepad++ Dark Theme &amp; Markdown</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Ravi Chandran
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-11-15T10:03:59-05:00" itemprop="datePublished" title="2020-11-15">2020-11-15</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Notepad++ is a light-weight editor for viewing files and quick editing when using other heavy-weight editors would be too painful. But its dark themes don't work with Markdown files (<code>.md</code>). Here are some brief notes on simple tinkering to get dark themes to work with Markdown.</p>
+<!-- TEASER_END -->
+
+<h3>Quick Fix For Markdown With Notepad++</h3>
+<p>I tried <a href="https://github.com/Edditoria/markdown-plus-plus">Markdown-Plus-Plus</a> but the themes provided still seemed to render weird highlighting on all the text <em>sometimes</em>. I'm using the latest Notepad++ 7.9.1 at the time of writing this.</p>
+<p>The trick I found was to delete the pre-installed XML file <code>markdown._preinstalled.udl.xml</code> from <code>%APPDATA%\Notepad++\userDefineLangs</code>. In my setup, this folder is empty right now.</p>
+<h3>Material Theme (Optional)</h3>
+<p>You can add a theme defined using an XML file to Notepad++ by placing it at <code>%APPDATA%\Notepad++</code>. I like this <a href="https://github.com/Codextor/npp-material-theme">Material Theme</a> created for Notepad++. Follow the simple <a href="https://github.com/Codextor/npp-material-theme#installation">installation instructions</a> from the site.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../categories/editors/" rel="tag">editors</a></li>
+            <li><a class="tag p-category" href="../../../categories/notepad%2B%2B/" rel="tag">Notepad++</a></li>
+            <li><a class="tag p-category" href="../../../categories/text-editors/" rel="tag">text editors</a></li>
+            <li><a class="tag p-category" href="../../../categories/writing/" rel="tag">writing</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../miscellaneous/the-pandemic-and-embedded-software-projects/" rel="prev" title="The Pandemic And Embedded Software Projects">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="rcnotebook",
+            disqus_url="https://ravi-chandran.github.io/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown/",
+        disqus_title="Notepad++ Dark Theme & Markdown",
+        disqus_identifier="cache/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+<br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
+
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
+        moment.locale("en");
+        fancydates(2, "YYYY-MM-DD HH:mm");
+        </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

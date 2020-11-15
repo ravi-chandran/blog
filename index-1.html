@@ -69,7 +69,35 @@
     
         
     <div class="postindex">
-            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/docker/docker-tricks-and-tips/" class="u-url">Docker Tricks And Tips</a></h1>
+            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/docker/docker-in-docker-and-proxy-settings/" class="u-url">Docker-in-Docker And Proxy Settings</a></h1>
+                <div class="metadata">
+                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                        Ravi Chandran
+                    </span></p>
+            <p class="dateline">
+            <a href="posts/docker/docker-in-docker-and-proxy-settings/" rel="bookmark">
+            <time class="published dt-published" datetime="2019-12-21T00:00:00-05:00" itemprop="datePublished" title="2019-12-21">2019-12-21</time></a>
+            </p>
+                        <p class="commentline">
+        
+    <a href="posts/docker/docker-in-docker-and-proxy-settings/#disqus_thread" data-disqus-identifier="cache/posts/docker/docker-in-docker-and-proxy-settings.html">Comments</a>
+
+
+                </p>
+</div>
+            </header><div class="p-summary entry-summary">
+                    <div>
+<p>Docker-in-Docker is explained by its author <a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">here</a>. In a nutshell, the recommendation is to not use "true" Docker-in-Docker. Instead, use:</p>
+<pre class="code literal-block"><span></span><code>docker container run --volume /var/run/docker.sock:/var/run/docker.sock ...
+</code></pre>
+
+
+<p>The above volume mapping provides the container with access to the Docker socket with which it can start more "sibling" containers. But the approach is not a "true" Docker-in-Docker (which is not recommended) and avoids its corresponding issues. The nice thing about this approach is it can work with any Docker image (with some additional items installed as explained in this post).</p>
+<p>Here's a compilation of useful proxy settings that may be required if you work in an organization using proxies and require Docker-in-Docker for your work. In addition, I also outline how to update your Dockerfile so that the corresponding image can support this Docker-in-Docker approach. </p>
+<p class="more"><a href="posts/docker/docker-in-docker-and-proxy-settings/">Read more…</a></p>
+</div>
+                </div>
+            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/docker/docker-tricks-and-tips/" class="u-url">Docker Tricks And Tips</a></h1>
                 <div class="metadata">
                     <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                         Ravi Chandran

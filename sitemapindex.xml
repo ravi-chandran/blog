@@ -66,6 +66,10 @@
   <lastmod>2020-07-10T15:32:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/editors.xml</loc>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/embedded-software.xml</loc>
   <lastmod>2020-11-08T18:09:00Z</lastmod>
  </sitemap>
@@ -104,6 +108,10 @@
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/nikola.xml</loc>
   <lastmod>2020-07-10T16:04:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/notepad%2B%2B.xml</loc>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/npm.xml</loc>
@@ -150,6 +158,10 @@
   <lastmod>2020-07-10T15:32:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/text-editors.xml</loc>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/travis-ci.xml</loc>
   <lastmod>2020-07-10T15:32:00Z</lastmod>
  </sitemap>
@@ -178,6 +190,10 @@
   <lastmod>2020-11-08T18:09:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://ravi-chandran.github.io/categories/writing.xml</loc>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wsl.xml</loc>
   <lastmod>2020-07-10T16:04:00Z</lastmod>
  </sitemap>
@@ -187,10 +203,10 @@
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
+  <lastmod>2020-11-15T16:51:00Z</lastmod>
  </sitemap>
 </sitemapindex>
