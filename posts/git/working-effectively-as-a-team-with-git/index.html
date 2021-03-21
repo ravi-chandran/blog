@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../recommendations-for-a-git-beginner/" title="Recommendations for a git beginner" type="text/html">
@@ -41,7 +41,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -123,14 +123,12 @@ git checkout feature-xyz  <span class="c1"># name of your hypothetical feature b
 git rebase master  <span class="c1"># may need to fix merge conflicts in feature-xyz</span>
 </code></pre>
 
-
 <p>The above steps result in rewriting history in your feature branch (and that's not a bad thing). Your feature branch is first made to look like <code>master</code> with all the updates made to <code>master</code> up to this point. And then all your commits to the feature branch are replayed on top so that they appear sequentially in the <code>git</code> log. You may get merge conflicts that you'll need to resolve along the way which can be a challenge. However, this is the best point to deal with merge conflicts because it is only impacting your feature branch.</p>
 <p>After you fix any conflicts and perform regression testing, if you're ready to merge your feature back into <code>master</code>, you'd perform the above rebase steps one last time and then perform the merge:</p>
 <pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git merge feature-xyz
 </code></pre>
-
 
 <p>In the interim, if someone else had pushed changes to <code>master</code> that conflicts with yours, the <code>git</code> merge will again have conflicts which you'll need to resolve, and repeat any necessary regression testing.</p>
 <p>There are other merge philosophies (e.g. without rebasing and only using merge to avoid rewriting history), some of which may even be simpler to use. However, I've found this approach to be a clean and reliable strategy. The commit history is stacked up as a sequence of features which is meaningful.</p>
@@ -140,18 +138,15 @@ git merge feature-xyz
 <pre class="code literal-block"><span></span><code>git rebase -i HEAD~20  <span class="c1"># look at up to 20 commits to consider squashing</span>
 </code></pre>
 
-
 <p>When the above is executed, an editor will pop up with a list of commits that you can act upon in several ways including <em>pick</em> or <em>squash</em>. Picking a commit means keeping that commit message. Squashing implies combining that commit's message into the previous commit. Using these and other options, you can combine commit messages into one, and perform some editing and clean up. It's also an opportunity to get rid of the commit messages that aren't really important (e.g. a commit message for fixing a typo).</p>
 <p>Note that my suggestion here is to keep all the actions associated with the commits, but only combine the associated message text and edit them for improved clarity prior to merging into <code>master</code>. Be careful not to drop a commit which is also an option of <code>git rebase</code> unless you actually intended the drop.</p>
 <p>After performing such a rebase, I like to look at the <code>git log</code> one last time to make any final edits with:</p>
 <pre class="code literal-block"><span></span><code>git commit --amend
 </code></pre>
 
-
 <p>Finally, a forced update to your remote feature branch is necessary since the <code>git</code> commit history for the branch has been rewritten:</p>
 <pre class="code literal-block"><span></span><code>git push -f
 </code></pre>
-
 
 <h3>Using tags</h3>
 <p>After you have performed the necessary testing and are ready for deployment of the software from the <code>master</code> branch, or if you want to preserve the current state as a significant milestone for any other reason, you should create a <code>git</code> tag. While a branch accumulates a history of changes corresponding to commits, a tag is a snapshot of the branch's state at that point in time. A tag can be thought of as a history-less branch or as a named pointer to a specific commit immediately after which the tag was created.</p>
@@ -160,12 +155,10 @@ git merge feature-xyz
 git push --tags   <span class="c1"># don't forget to explicitly push the tag to the remote</span>
 </code></pre>
 
-
 <p>Consider the scenario where software corresponding to a given <code>git</code> tag is distributed to a customer, and the customer reports an issue. While the code in the repository may continue to evolve, it's often necessary to go back to the state of the code corresponding to the <code>git</code> tag to reproduce the customer issue precisely and create a bug fix. Sometimes the newer code may have already fixed the issue but not always. Typically, you'd checkout the specific tag and create a branch from that tag:</p>
 <pre class="code literal-block"><span></span><code>git checkout milestone-id        <span class="c1"># checkout the tag that was distributed to the customer</span>
 git checkout -b new-branch-name  <span class="c1"># create new branch to reproduce the bug</span>
 </code></pre>
-
 
 <p>Beyond this, consider using annotated tags and signed tags if these may be beneficial to your project.</p>
 <h3>Have the software executable print the tag</h3>
@@ -209,7 +202,7 @@ git checkout -b new-branch-name  <span class="c1"># create new branch to reprodu
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -220,15 +213,13 @@ git checkout -b new-branch-name  <span class="c1"># create new branch to reprodu
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

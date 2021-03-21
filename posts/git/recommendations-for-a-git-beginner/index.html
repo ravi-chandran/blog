@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../../miscellaneous/wifi-router-with-raspberry-pi/" title="Developing With Equipment From Work During The Pandemic" type="text/html">
@@ -41,7 +41,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -124,12 +124,10 @@
 <pre class="code literal-block"><span></span><code>git checkout -- filepath
 </code></pre>
 
-
 <p>This approach is more reliable than depending on your code editor's undo capability. Interestingly, the more sophisticated I became with <code>git</code>, the occurrence of such bad messes became fewer and far between.</p>
 <p>For undoing a commit, there are a plethora of ways depending on how you want to manipulate <code>git</code> history (which you shouldn't worry about at this stage). A simple and effective approach for undoing a commit is:</p>
 <pre class="code literal-block"><span></span><code>git revert &lt;commit-hash&gt;
 </code></pre>
-
 
 <p>With the above method, you don't have to be concerned about needing to perform forced updates to the remote.</p>
 <h3>Using branches to add features</h3>
@@ -139,7 +137,6 @@ git pull
 git checkout -b feature-xyz
 </code></pre>
 
-
 <p>Once the new feature has been tested, then you'd merge the feature branch back into <code>master</code>, with steps along the following lines:</p>
 <pre class="code literal-block"><span></span><code><span class="c1"># assuming feature-xyz is complete and pushed</span>
 git checkout master
@@ -148,13 +145,11 @@ git merge feature-xyz
 git push
 </code></pre>
 
-
 <p>In a one-person project, you'd never have merge conflicts, so this will always work nicely even when using different computers to access your repository. It's usually a good idea to keep the feature branch around for a short while, but it should eventually be deleted locally and on the remote:</p>
 <pre class="code literal-block"><span></span><code>git checkout master
 git push origin --delete feature-xyz  <span class="c1"># delete feature branch on remote</span>
 git branch -d feature-xyz             <span class="c1"># delete feature branch locally</span>
 </code></pre>
-
 
 <h3>Undoing changes with the help of branches</h3>
 <p>Once you start using branches, more sophisticated ways of undoing changes become available. When things are completely out of control and lots of changes have already been committed, you can always just abandon the branch:</p>
@@ -165,14 +160,12 @@ git branch -D branch-being-abandoned
 git push origin --delete branch-being-abandoned
 </code></pre>
 
-
 <p>And start back again with a new feature branch off <code>master</code>. Sometimes, it's good to save the branch being abandoned for a little while as you might be able to salvage a file or two and add it to your new feature branch. This can be done with:</p>
 <pre class="code literal-block"><span></span><code>git checkout master
 git pull
 git checkout -b new-feature-branch
 git checkout branch-being-abandoned -- good-file
 </code></pre>
-
 
 <p>The above retrieves the file <code>good-file</code> from the <code>branch-being-abandoned</code> into your new feature branch.</p>
 <h3>Even more sophisticated ways of undoing changes</h3>
@@ -181,24 +174,20 @@ git checkout branch-being-abandoned -- good-file
 git push -f              <span class="c1"># leave no evidence of the last commit in the remote!</span>
 </code></pre>
 
-
 <h3>Comparing files between branches</h3>
 <p>If you need to compare <code>master</code> and <code>feature-xyz</code> branches:</p>
 <pre class="code literal-block"><span></span><code><span class="c1"># Show all changes between these 2 branches</span>
 git diff master..feature-xyz
 </code></pre>
 
-
 <p>The above will show the differences in every file between these branches. And the output can be voluminous if there are lots of files with changes. I often just want a list of files that have changed, which can be obtained with:</p>
 <pre class="code literal-block"><span></span><code><span class="c1"># List files that are different between these 2 branches</span>
 git diff master..feature-xyz --stat
 </code></pre>
 
-
 <p>After that, I can view changes in one particular file between the branches with:</p>
 <pre class="code literal-block"><span></span><code>git diff master..feature-xyz -- &lt;filepath&gt;
 </code></pre>
-
 
 <h3>Graphical <code>git</code> tools vs the command line</h3>
 <p>There are many great graphical tools and editor extensions that help with using <code>git</code> in various ways. I mentioned <code>gitk</code> earlier. Tools try to abstract away the complexity of <code>git</code> while introducing ambiguity about what they are actually doing under the hood. My preference is to do almost all <code>git</code> related actions on the command line. Otherwise, I think it's difficult to truly understand some of the fundamentals.</p>
@@ -250,7 +239,7 @@ git diff master..feature-xyz --stat
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -261,15 +250,13 @@ git diff master..feature-xyz --stat
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

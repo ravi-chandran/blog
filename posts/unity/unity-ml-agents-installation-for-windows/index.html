@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/unity/unity-ml-agents-installation-for-windows/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../../docker/docker-in-docker-and-proxy-settings/" title="Docker-in-Docker And Proxy Settings" type="text/html">
@@ -42,7 +42,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -140,22 +140,21 @@ CertUtil: -hashfile command completed successfully.
 <p>Install Python 3.7.6 by running the downloaded executable. Use the default install option but check the box for "<strong>Add Python 3.7 to <code>PATH</code></strong>"</p>
 </li>
 <li>
-<p>Verify the installation by running <code>python</code> from a command prompt and making sure the version is right and <code>AMD64</code> is indicated as shown below.
-</p>
+<p>Verify the installation by running <code>python</code> from a command prompt and making sure the version is right and <code>AMD64</code> is indicated as shown below.</p>
+</li>
+</ul>
 <pre>
 D:\repos&gt;<b>python</b>
 Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
 </pre>
-</li>
-<li>
-<p>Create a batch file in <code>D:\repos\activatemlagents.bat</code> with lines:</p>
-</li>
+
+<ul>
+<li>Create a batch file in <code>D:\repos\activatemlagents.bat</code> with lines:</li>
 </ul>
 <pre class="code literal-block"><span></span><code><span class="k">cd</span> D:\repos
 zz-python-envs\mlagents\Scripts\activate
 </code></pre>
-
 
 <ul>
 <li>Set up virtual environment and upgrade pip. Note that we are <strong>not</strong> installing <code>mlagents</code> from PyPi.</li>
@@ -167,7 +166,6 @@ activatemlagents
 python -m pip install --upgrade pip
 </code></pre>
 
-
 <ul>
 <li>Clone the ML-Agents Toolkit repository, and switch to the latest stable release.</li>
 </ul>
@@ -176,7 +174,6 @@ git clone https://github.com/Unity-Technologies/ml-agents.git
 <span class="k">cd</span> ml-agents
 git checkout latest_release
 </code></pre>
-
 
 <ul>
 <li>Install <code>mlagents</code> from the cloned repo rather than from PyPi.</li>
@@ -190,7 +187,6 @@ python -m pip install -e ./
 python -m pip install -e ./
 </code></pre>
 
-
 <ul>
 <li>Verify installation by opening a new command prompt and executing the following:</li>
 </ul>
@@ -198,7 +194,6 @@ python -m pip install -e ./
 activatemlagents
 mlagents-learn --help
 </code></pre>
-
 
 <h3>Using ML-Agents Toolkit With Unity</h3>
 <p>For Unity 2019.30f3 or later, here are the steps to add ML-Agents to a project. These are adapted from <a href="https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Create-New.md#set-up-the-unity-project">here</a>.</p>
@@ -247,7 +242,7 @@ mlagents-learn --help
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -258,15 +253,13 @@ mlagents-learn --help
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

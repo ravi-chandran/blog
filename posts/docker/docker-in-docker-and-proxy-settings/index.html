@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/docker/docker-in-docker-and-proxy-settings/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../docker-tricks-and-tips/" title="Docker Tricks And Tips" type="text/html">
@@ -47,7 +47,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -113,7 +113,6 @@
 <p>Docker-in-Docker is explained by its author <a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">here</a>. In a nutshell, the recommendation is to not use "true" Docker-in-Docker. Instead, use:</p>
 <pre class="code literal-block"><span></span><code>docker container run --volume /var/run/docker.sock:/var/run/docker.sock ...
 </code></pre>
-
 
 <p>The above volume mapping provides the container with access to the Docker socket with which it can start more "sibling" containers. But the approach is not a "true" Docker-in-Docker (which is not recommended) and avoids its corresponding issues. The nice thing about this approach is it can work with any Docker image (with some additional items installed as explained in this post).</p>
 <p>Here's a compilation of useful proxy settings that may be required if you work in an organization using proxies and require Docker-in-Docker for your work. In addition, I also outline how to update your Dockerfile so that the corresponding image can support this Docker-in-Docker approach. </p>
@@ -186,7 +185,6 @@
 <span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">"/scripts/docker-entrypoint.sh"</span><span class="p">]</span>
 </code></pre>
 
-
 <h2>Running The Docker-in-Docker Container</h2>
 <p>Let's assume that the Docker image is named <code>myproject:v1</code>. To start a container based on this image, run the following Bash script:</p>
 <pre class="code literal-block"><span></span><code>docker container run                                    <span class="se">\</span>
@@ -197,7 +195,6 @@
     --rm -it --name my_shell myproject:v1               <span class="se">\</span>
     <span class="p">|&amp;</span> tee <span class="nv">$BASH_SOURCE</span>.log
 </code></pre>
-
 
 <p>The volume mapping "<code>--volume /var/run/docker.sock:/var/run/docker.sock</code>" provides the container with access to the Docker socket to potentially create "sibling" containers.</p>
 <p>We need to store multiple files for proxy configuration purposes. Let's place these files in the folder <code>$(pwd)/common/scripts</code>. The volume mapping "<code>--volume $(pwd)/common/scripts:/scripts</code>" maps this folder to <code>/scripts</code> inside the container. The files we will store in the folder <code>$(pwd)/common/scripts</code> are:</p>
@@ -234,7 +231,6 @@
 
 newgrp <span class="si">${</span><span class="nv">DOCKER_GROUP</span><span class="si">}</span>
 </code></pre>
-
 
 <p>The script invokes the <code>setproxies.sh</code> script which will be explained shortly. It then adds the user to the <code>docker</code> group. Finally, it uses the <code>newgrp</code> command to log the user into the <code>docker</code> group. In essence, we're executing these <a href="https://docs.docker.com/install/linux/linux-postinstall/">Docker post-install steps</a> here. I haven't found a way to do all of these steps within the Dockerfile itself which would have been more convenient.</p>
 <h2>Proxy Settings Script (<code>setproxies.sh</code>)</h2>
@@ -289,20 +285,17 @@ git config --global core.gitProxy /scripts/git-proxy.sh
 <span class="nb">unset</span> MY_PROXY
 </code></pre>
 
-
 <h3>Environment, <code>wget</code> and <code>npm</code> Proxy Settings</h3>
 <p>We first initialize script variables for the proxy environment. These are <code>unset</code> at the end of the script to minimize "environmental pollution". Then we set <code>wget</code> and <code>npm</code> proxies.</p>
 <h3>Proxy Setting For <code>apt-get</code>
 </h3>
 <p>For <code>apt-get</code>, I store the proxy settings in a file <code>01proxy</code> and copy it into <code>/etc/apt/apt.conf.d/01proxy</code>. Obviously, the contents of <code>01proxy</code> will depend on your organization's proxy settings. Typically, this file will have one or more lines of the format:</p>
-<pre class="code literal-block"><span></span><code><span class="c">Acquire::http::Proxy "http://yourproxyaddress:proxyport/";</span>
+<pre class="code literal-block"><span></span><code><span class="nt">Acquire</span><span class="p">::</span><span class="nd">http</span><span class="p">::</span><span class="nd">Proxy</span> <span class="s2">"http://yourproxyaddress:proxyport/"</span><span class="o">;</span>
 </code></pre>
-
 
 <p>If you have intra-organization mirrors for repositories, then you'll also need a line such as:</p>
-<pre class="code literal-block"><span></span><code><span class="c">Acquire::http::Proxy::your_mirror_url DIRECT;</span>
+<pre class="code literal-block"><span></span><code><span class="nt">Acquire</span><span class="p">::</span><span class="nd">http</span><span class="p">::</span><span class="nd">Proxy</span><span class="p">::</span><span class="nd">your_mirror_url</span> <span class="nt">DIRECT</span><span class="o">;</span>
 </code></pre>
-
 
 <h3>Proxy Setting For <code>git</code>
 </h3>
@@ -311,7 +304,6 @@ git config --global core.gitProxy /scripts/git-proxy.sh
 <span class="c1"># reference: https://wiki.archlinux.org/index.php/HTTP_tunneling</span>
 corkscrew http://yourproxyaddress proxyport <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </code></pre>
-
 
 <p>Besides <code>corkscrew</code>, other options for ways for handling <code>git</code> access exist. For example, if the <code>git://</code> protocol doesn't work and a GitHub mirror exists for the repository, you can directly specify substitutions using <code>git config</code> commands. Here are a couple of examples I've used:</p>
 <pre class="code literal-block"><span></span><code>git config --global url.https://github.com/qemu/capstone.git/.insteadOf git://git.qemu.org/capstone.git
@@ -360,7 +352,7 @@ git config --global --add url.https://github.com/qemu/keycodemapdb.git/.insteadO
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -371,15 +363,13 @@ git config --global --add url.https://github.com/qemu/keycodemapdb.git/.insteadO
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

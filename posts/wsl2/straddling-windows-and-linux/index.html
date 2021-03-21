@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/wsl2/straddling-windows-and-linux/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../../git/working-effectively-as-a-team-with-git/" title="Working effectively as a team with git" type="text/html">
@@ -42,7 +42,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -122,12 +122,10 @@
 * Ubuntu-18.04    Running         2
 </code></pre>
 
-
 <p>I want to note down a couple of keys steps here as these can be used to select the WSL version and Linux distribution:</p>
 <pre class="code literal-block"><span></span><code>wsl --set-version Ubuntu-18.04 2
 wsl --set-default-version 2
 </code></pre>
-
 
 <h3>Switching between WSL2 and VirtualBox</h3>
 <p>This <a href="https://www.tcg.com/blog/yes-you-can-run-docker-and-virtualbox-on-windows-10-home/">article</a> mentioned that VirtualBox 6 had experimental support for Hyper-V, and that it could coexist with WSL2 and Docker for Windows. With the following settings for a given VirtualBox VM, the article mentioned that the VM could be run with Hyper-V enabled:</p>
@@ -149,13 +147,11 @@ wsl --set-default-version 2
 <pre class="code literal-block"><span></span><code>bcdedit /set hypervisorlaunchtype off
 </code></pre>
 
-
 <ul>
 <li>Enable Hyper-V by executing the following in an Administrator command prompt, reboot, and then run WSL2. VirtualBox won't work with this setting.</li>
 </ul>
 <pre class="code literal-block"><span></span><code>bcdedit /set hypervisorlaunchtype auto
 </code></pre>
-
 
 <p>While not ideal, I can still get access to my VirtualBox VMs with a reboot when necessary. Maybe VirtualBox will eventually work with Hyper-V enabled...</p>
 <h3>VSCode</h3>
@@ -183,7 +179,6 @@ wsl --set-default-version 2
 <pre class="code literal-block"><span></span><code><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span><span class="k">$(</span>cat /etc/resolv.conf <span class="p">|</span> grep nameserver <span class="p">|</span> awk <span class="s1">'{print $2}'</span><span class="k">)</span>:0.0
 </code></pre>
 
-
 <ul>
 <li>From the Windows Control Panel, find "Windows Defender Firewall", select "Allow an app through Windows Firewall". You may have to allow VcXsrv to accept connections from both Private and Public networks as shown below for X11 forwarding to work.</li>
 </ul>
@@ -210,7 +205,6 @@ sudo apt install terminator
 sudo apt install dbus-x11
 </code></pre>
 
-
 <p>Without <code>dbus-x11</code>, <code>terminator</code> fails with some error associated with <code>dbus.exceptions.DBusException</code>. <a href="https://www.cyberciti.biz/faq/fix-bindbus-launch-terminated-abnormally-without-on-centos-rhel/">This</a> provided the hint about installing <code>dbus-x11</code> and it solved the issue. Without installing <code>dbus-x11</code>, you could still run <code>terminator</code> but need to use the  <code>-u</code> option as mentioned <a href="https://bugs.launchpad.net/terminator/+bug/1763638">here</a>.</p>
 <h3>Finishing Touches</h3>
 <p>To start <code>terminator</code>, I just want to double-click an icon on my desktop. Here's my setup:</p>
@@ -219,7 +213,6 @@ sudo apt install dbus-x11
 </ul>
 <pre class="code literal-block"><span></span><code>python start_terminator.py
 </code></pre>
-
 
 <ul>
 <li>In the same folder as <code>terminator.bat</code>, add <code>start_terminator.py</code> with the following content. You'll need Python 3.6 or later installed on Windows:</li>
@@ -240,7 +233,6 @@ sudo apt install dbus-x11
 
 <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">'start /min wsl -- cd ; DISPLAY=</span><span class="si">{</span><span class="n">ipv4</span><span class="si">}</span><span class="s1">:0.0 terminator'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre>
-
 
 <ul>
 <li>
@@ -307,7 +299,7 @@ sudo apt install dbus-x11
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -318,15 +310,13 @@ sudo apt install dbus-x11
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

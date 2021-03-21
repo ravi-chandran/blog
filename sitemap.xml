@@ -7,298 +7,250 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://ravi-chandran.github.io/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/archive.html</loc>
-  <lastmod>2020-11-22T00:58:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/</loc>
-  <lastmod>2020-11-21T19:15:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/apt-get/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/blog/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/blogs/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/build-system/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_blogging/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_docker/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_embedded-software/</loc>
-  <lastmod>2020-11-08T14:27:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_git/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_linux/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_python/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_raspberry-pi/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/cat_unity3d/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/cat_writing/</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/corkscrew/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/dark-mode/</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/docker-in-docker/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/docker/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/editors/</loc>
-  <lastmod>2020-11-15T16:12:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/embedded-software/</loc>
-  <lastmod>2020-11-08T14:27:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/git/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/github-pages/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/http-server/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/iptables/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/libreoffice/</loc>
-  <lastmod>2020-11-21T19:15:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/linux/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/machine-learning/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/ml-agents/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/networking/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/nikola/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/notepad%2B%2B/</loc>
-  <lastmod>2020-11-15T16:12:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/npm/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/pandemic/</loc>
-  <lastmod>2020-11-08T14:27:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/proxy/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/pypi/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/pytest/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/python/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/raspberry-pi/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/reinforcement-learning/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/source-control/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/ssh/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/stackoverflow/</loc>
-  <lastmod>2020-11-21T19:15:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/terminalizer/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/text-editors/</loc>
-  <lastmod>2020-11-15T16:12:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/travis-ci/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/twine/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/unity/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/version-control/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/visual-studio-code/</loc>
-  <lastmod>2020-11-21T19:15:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/vscode/</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/wget/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/windows/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/working-from-home/</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/categories/writing/</loc>
-  <lastmod>2020-11-15T16:12:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/wsl/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/categories/wsl2/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/index-1.html</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/blogging/github-blog-pages-using-nikola/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/docker-in-docker-and-proxy-settings/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/git/git-setup-in-5-minutes/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/git/recommendations-for-a-git-beginner/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/git/working-effectively-as-a-team-with-git/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/miscellaneous/the-pandemic-and-embedded-software-projects/</loc>
-  <lastmod>2020-11-08T14:27:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/miscellaneous/wifi-router-with-raspberry-pi/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/posts/onwriting/going-dark/</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
- </url>
- <url>
-  <loc>https://ravi-chandran.github.io/posts/onwriting/notepad-plus-plus-dark-theme-plus-markdown/</loc>
-  <lastmod>2020-11-15T16:12:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/python/a-simple-command-timer-for-windows/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/unity/unity-ml-agents-installation-for-windows/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/wsl2/straddling-windows-and-linux/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://ravi-chandran.github.io/posts/wsl2/wsl2-and-nikola-blogs/</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </url>
 </urlset>

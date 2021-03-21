@@ -7,230 +7,190 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/apt-get.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/blog.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/blogs.xml</loc>
-  <lastmod>2020-07-10T16:04:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/build-system.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_blogging.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_docker.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_embedded-software.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_git.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_linux.xml</loc>
-  <lastmod>2020-07-10T16:06:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_python.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_raspberry-pi.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/cat_unity3d.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/cat_writing.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/corkscrew.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/dark-mode.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/docker-in-docker.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/docker.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/editors.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/embedded-software.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/git.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/github-pages.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/http-server.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/iptables.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/libreoffice.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/linux.xml</loc>
-  <lastmod>2020-11-21T19:15:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/machine-learning.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/ml-agents.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/networking.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/nikola.xml</loc>
-  <lastmod>2020-07-10T16:04:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/notepad%2B%2B.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/npm.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/pandemic.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/proxy.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/pypi.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/pytest.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/python.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/raspberry-pi.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/reinforcement-learning.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/source-control.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/ssh.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/stackoverflow.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/terminalizer.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/text-editors.xml</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/travis-ci.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/twine.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/unity.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/version-control.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/visual-studio-code.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/vscode.xml</loc>
-  <lastmod>2020-11-21T18:37:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wget.xml</loc>
-  <lastmod>2020-07-10T15:32:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/windows.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/working-from-home.xml</loc>
-  <lastmod>2020-11-08T18:09:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://ravi-chandran.github.io/categories/writing.xml</loc>
-  <lastmod>2020-11-21T14:45:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wsl.xml</loc>
-  <lastmod>2020-07-10T16:04:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/categories/wsl2.xml</loc>
-  <lastmod>2020-07-10T16:06:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/rss.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://ravi-chandran.github.io/sitemap.xml</loc>
-  <lastmod>2020-11-22T00:59:00Z</lastmod>
+  <lastmod>2021-03-21T18:40:00Z</lastmod>
  </sitemap>
 </sitemapindex>

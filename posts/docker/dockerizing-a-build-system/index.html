@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/docker/dockerizing-a-build-system/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../../blogging/github-blog-pages-using-nikola/" title="GitHub Blog Pages Using Nikola" type="text/html">
@@ -40,7 +40,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -133,7 +133,6 @@
 <pre class="code literal-block"><span></span><code>./build.sh /path/to/workdir
 </code></pre>
 
-
 <p>Let's assume that the output is also generated somewhere within <code>/path/to/workdir</code> to keep the example architecture simple for the sake of explanation. (Otherwise, we'd just be increasing the number of volumes exposed to the docker container which is not difficult, but more cumbersome to explain.)</p>
 <ul>
 <li>
@@ -141,7 +140,6 @@
 </ul>
 <pre class="code literal-block"><span></span><code>./shell.sh /path/to/workdir
 </code></pre>
-
 
 <p>And it should get me to a bash shell inside the container with access to the toolset as well as my <code>workdir</code> so I can experiment as I please with the toolset.</p>
 <h3>Build System Architecture</h3>
@@ -163,7 +161,6 @@
         └── run_build.sh
 </code></pre>
 
-
 <p>Note that I've deliberately excluded the <code>example_workdir</code> in the above, which you'll find in the tutorial repository. Actual source code would typically reside in a separate repository and not be part of the build tool repository. It was included in the tutorial repository so that we didn't have to deal with two repositories in the tutorial.</p>
 <p>In case you want to follow along with the tutorial (and have Docker installed), you'd want to first build the docker image <code>swbuilder:v1</code> with:</p>
 <pre class="code literal-block"><span></span><code><span class="nb">cd</span> dockerize-tutorial/swbuilder/ 
@@ -171,13 +168,11 @@
 docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
 </code></pre>
 
-
 <p>But it's not necessary if you're only interested in the concepts as I'll be explaining all the files eventually.</p>
 <p>In the tutorial, you'd invoke <code>build.sh</code> as:</p>
 <pre class="code literal-block"><span></span><code><span class="nb">cd</span> dockerize-tutorial
 ./build.sh ~/repos/dockerize-tutorial/example_workdir
 </code></pre>
-
 
 <p>The code for <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/build.sh"><code>build.sh</code></a> is listed below.  This script instantiates a container from the docker image <code>swbuilder:v1</code>. It performs two volume mappings: one from the <code>example_workdir</code> folder to a volume inside the container at path <code>/workdir</code>, and the second from <code>dockerize-tutorial/swbuilder/scripts</code> outside the container to <code>/scripts</code> inside the container.</p>
 <pre class="code literal-block"><span></span><code>docker container run                              <span class="se">\</span>
@@ -188,14 +183,12 @@ docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
     build
 </code></pre>
 
-
 <p>In addition, the <code>build.sh</code> also invokes the container to run with your username (and group which is assumed to be the same) so that you will not have issues with file permissions when accessing the generated build output.</p>
 <p>If you look at <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/shell.sh"><code>shell.sh</code></a>, you'll note that it is identical except for two things. <code>build.sh</code> creates a container named <code>build_swbuilder</code> while <code>shell.sh</code> creates one named <code>shell_swbuilder</code>. This is so that there are no conflicts in case you invoke either script while the other one is running. </p>
 <p>The other key difference between the two scripts is the last argument. <code>build.sh</code> passes in the argument <code>build</code> while the <code>shell.sh</code> passes in the argument <code>shell</code>. If you look at the <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/install_swbuilder.dockerfile">Dockerfile</a> that is used to create the docker image, the last line contains the following <code>ENTRYPOINT</code>. This means that the the "<code>docker container run</code>" invocation above will result in executing the <code>run_build.sh</code> script with either <code>build</code> or <code>shell</code> as the one input argument.</p>
 <pre class="code literal-block"><span></span><code><span class="c"># run bash script and process the input command</span>
 <span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"/scripts/run_build.sh"</span><span class="p">]</span>
 </code></pre>
-
 
 <p>Examining <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/swbuilder/scripts/run_build.sh"><code>run_build.sh</code></a>, we see that it simply uses this input argument to either start the bash shell or invoke <code>gcc</code> to perform the build of our trivial <code>helloworld.c</code> project. A real build system would typically invoke a Makefile and not run <code>gcc</code> directly.</p>
 <pre class="code literal-block"><span></span><code><span class="nb">cd</span> /workdir
@@ -208,7 +201,6 @@ docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
     gcc helloworld.c -o helloworld -Wall
 <span class="k">fi</span>
 </code></pre>
-
 
 <p>You could certainly pass more than one argument if your use case demands it. For the build systems I've dealt with, usually the build is for a given project with a specific <code>make</code> invocation. In the case of a build system where the build invocation is complex, you can have the <code>run_build.sh</code> call a specific script inside <code>workdir</code> that the end user has to write.</p>
 <h3>A Note About The <code>scripts</code> Folder</h3>
@@ -251,7 +243,7 @@ docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -262,15 +254,13 @@ docker image ls  <span class="c1"># resulting image will be swbuilder:v1</span>
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>

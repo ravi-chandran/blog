@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
 <link rel="canonical" href="https://ravi-chandran.github.io/posts/docker/docker-tricks-and-tips/">
 <!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Ravi Chandran">
 <link rel="prev" href="../dockerizing-a-build-system/" title="Dockerizing A Build System" type="text/html">
@@ -41,7 +41,7 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href="https://ravi-chandran.github.io/">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../../">
             <img src="../../../images/rcnotebooksmall.png" alt="RC Notebook" id="logo" class="d-inline-block align-top"></a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
@@ -127,7 +127,6 @@
 └── workdir                                 <span class="c1"># example folder used as a volume in the running container</span>
 </code></pre>
 
-
 <p>The key steps of the approach are:</p>
 <ul>
 <li>
@@ -148,7 +147,6 @@
 <span class="n">cd</span> <span class="o">..</span>
 </code></pre>
 
-
 <ul>
 <li>
 <p>If you're wondering about the strange IP address, I'm working with a VirtualBox Linux VM, and <code>10.0.2.15</code> shows up as the address of the Ethernet adapter when I run <code>ifconfig</code>. This IP seems to be the convention used by VirtualBox. If your setup is different, you'll need to update this IP address in <code>build_docker_image.sh</code> and <code>install_anaconda.dockerfile</code> appropriately. The server's port number is set to 8888 for this example.</p>
@@ -159,7 +157,6 @@
 </ul>
 <pre class="code literal-block"><span></span><code><span class="nb">kill</span> -9 <span class="sb">`</span>ps -ef <span class="p">|</span> grep http.server <span class="p">|</span> grep <span class="m">8888</span> <span class="p">|</span> awk <span class="s1">'{print $2}'</span>
 </code></pre>
-
 
 <ul>
 <li>
@@ -176,7 +173,6 @@
     <span class="o">&amp;&amp;</span> rm ~/anaconda.sh <span class="se">\</span>
     <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
 </code></pre>
-
 
 <ul>
 <li>
@@ -195,7 +191,6 @@ $ anaconda --version
 anaconda Command line client <span class="o">(</span>version <span class="m">1</span>.7.2<span class="o">)</span>
 </code></pre>
 
-
 <ul>
 <li>You'll note that <code>run_container.sh</code> sets up a volume <code>workdir</code>. In this example repository, the folder <code>workdir/</code> is empty. This is a convention I use to set up a volume where I can have my Python and other scripts that are independent of the docker image.</li>
 </ul>
@@ -205,7 +200,6 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 <span class="c"># other commands...</span>
 <span class="k">USER</span><span class="s"> ${USERNAME}</span>
 </code></pre>
-
 
 <p>The <code>USERNAME</code> can be passed in as a build argument (<code>--build-arg</code>) when executing the "<code>docker image build</code>". You can see an example of this in the example <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/install_anaconda.dockerfile">Dockerfile</a> and corresponding <a href="https://github.com/ravi-chandran/dockerize-tutorial/blob/master/tutorial2_docker_tricks/build_docker_image.sh">build script</a>.</p>
 <p>Some portions of the tools may also need to be installed as a non-<code>root</code> user. So the sequence of installations in the Dockerfile may need to be different from the way it's done if you were installing manually and directly under Linux.</p>
@@ -220,7 +214,6 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
     <span class="o">&amp;&amp;</span> rm -fr /var/lib/apt/lists/<span class="o">{</span>apt,dpkg,cache,log<span class="o">}</span> /tmp/* /var/tmp/*
 </code></pre>
 
-
 <p>Besides this, ensure that you have a <code>.dockerignore</code> file in place to ignore items that don't need to be sent to the Docker build context.</p>
 <h3>Non-Interactive Installation</h3>
 <p>I've found the <code>DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends</code> options for the <code>apt-get install</code> instruction (as in the example above) necessary to prevent the installer opening dialog boxes. Note that these options should be used as part of the <code>RUN</code> instruction. The <code>DEBIAN_FRONTEND=noninteractive</code> should not be set as an environment variable (<code>ENV</code>) in the Dockerfile as explained <a href="https://docs.docker.com/engine/faq/">here</a> as it will be inherited by the containers.</p>
@@ -233,7 +226,6 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 <p>The default shell assumed by Docker is <code>sh</code> for Linux. I'm more familiar with <code>bash</code> and so I have a tendency to override the default with <code>bash</code> early on in the Dockerfile like this:</p>
 <pre class="code literal-block"><span></span><code><span class="k">SHELL</span> <span class="p">[</span><span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="s2">"-c"</span><span class="p">]</span>
 </code></pre>
-
 
 <p>I don't think there is a significant impact for the types of commands I use in Dockerfiles, so this is just precaution. The script invoked at the Dockerfile entrypoint should have the appropriate <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> anyway.</p>
 </div>
@@ -273,7 +265,7 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 
 
         </section></article><script>var disqus_shortname="rcnotebook";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="mailto:">Ravi Chandran</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
 <br><a rel="license" href="https://opensource.org/licenses/MIT">MIT License for Software, </a>
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons License CC BY 4.0 for other items</a>
 
@@ -284,15 +276,13 @@ anaconda Command line client <span class="o">(</span>version <span class="m">1</
 </div>
 
 
-        <script src="../../../assets/js/all-nocdn.js"></script><script src="../../../assets/js/moment-with-locales.min.js"></script><!-- fancy dates --><script>
-        moment.locale("en");
-        fancydates(2, "YYYY-MM-DD HH:mm");
+        <script src="../../../assets/js/all-nocdn.js"></script><script src="https://polyfill.io/v3/polyfill.js?features=Intl.RelativeTimeFormat.%7Elocale.en"></script><script src="../../../assets/js/luxon.min.js"></script><!-- fancy dates --><script>
+        luxon.Settings.defaultLocale = "en";
+        fancydates(2, {"preset": false, "format": "yyyy-MM-dd HH:mm"});
         </script><!-- end fancy dates --><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
-        captions: function(element) {
-            return element.getElementsByTagName('img')[0].alt;
-    }});
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
     </script>
 </body>
 </html>
